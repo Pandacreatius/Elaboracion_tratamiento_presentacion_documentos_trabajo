@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Repaso ampliado UF0327 · Procesadores de texto</title>
+<style>
+:root{--navy:#14213d;--blue:#2563eb;--cyan:#06b6d4;--green:#10b981;--purple:#8b5cf6;--amber:#f59e0b;--red:#ef4444;--bg:#f7f9fc;--text:#111827;--muted:#64748b;--card:#fff;--line:#e5e7eb;--soft:#eff6ff}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--text);line-height:1.55}header{padding:58px 22px 44px;background:radial-gradient(circle at 82% 15%,rgba(6,182,212,.32),transparent 26%),linear-gradient(135deg,#0f172a,#1d4ed8);color:white;overflow:hidden}.wrap{max-width:1160px;margin:auto}.badge{display:inline-block;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.28);padding:8px 13px;border-radius:999px;font-weight:800;font-size:.86rem;margin:0 8px 8px 0}h1{font-size:clamp(2.2rem,5vw,4.7rem);line-height:1;margin:20px 0 16px;letter-spacing:-.055em}header p{font-size:1.2rem;max-width:830px;color:#e0f2fe}.hero-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:32px}.hero-card{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);border-radius:22px;padding:18px;font-weight:800}nav{position:sticky;top:0;background:rgba(255,255,255,.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);z-index:20}.nav-inner{max-width:1160px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:11px 18px}.nav-brand{font-weight:950;color:var(--navy);letter-spacing:-.02em;white-space:nowrap}.hamburger{display:none;appearance:none;border:1px solid var(--line);background:white;color:var(--navy);border-radius:14px;width:46px;height:42px;cursor:pointer;align-items:center;justify-content:center;flex-direction:column;gap:5px;box-shadow:0 8px 18px rgba(15,23,42,.08)}.hamburger span{display:block;width:22px;height:3px;background:var(--navy);border-radius:999px;transition:.25s}.hamburger[aria-expanded="true"] span:nth-child(1){transform:translateY(8px) rotate(45deg)}.hamburger[aria-expanded="true"] span:nth-child(2){opacity:0}.hamburger[aria-expanded="true"] span:nth-child(3){transform:translateY(-8px) rotate(-45deg)}.nav-links{display:flex;gap:10px;overflow:auto;scrollbar-width:thin}.nav-links a{white-space:nowrap;text-decoration:none;color:var(--navy);font-weight:800;border:1px solid var(--line);padding:8px 12px;border-radius:999px;background:white;font-size:.9rem}.nav-links a:hover,.nav-links a:focus{border-color:var(--blue);color:var(--blue);outline:none}.no-scroll{overflow:hidden}section{padding:46px 20px}.section-title{display:flex;align-items:center;gap:12px;margin-bottom:14px}.num{width:42px;height:42px;border-radius:14px;background:var(--blue);color:white;display:grid;place-items:center;font-weight:900}.section-title h2{font-size:clamp(1.65rem,3vw,2.45rem);line-height:1.1;margin:0;color:var(--navy);letter-spacing:-.03em}.lead{font-size:1.05rem;color:var(--muted);max-width:850px;margin:0 0 20px}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.grid-3{grid-template-columns:repeat(3,1fr)}.grid-2{grid-template-columns:repeat(2,1fr)}.card{background:var(--card);border:1px solid var(--line);border-left:6px solid var(--blue);border-radius:22px;padding:21px;box-shadow:0 14px 30px rgba(15,23,42,.06)}.card h3{margin:0 0 8px;color:var(--navy);font-size:1.13rem}.card p{margin:0;color:#334155}.card ul,.card ol{margin:8px 0 0;padding-left:20px}.blue{border-left-color:var(--blue)}.green{border-left-color:var(--green)}.purple{border-left-color:var(--purple)}.amber{border-left-color:var(--amber)}.cyan{border-left-color:var(--cyan)}.red{border-left-color:var(--red)}.flow{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-top:24px}.step{background:white;border:1px solid var(--line);border-radius:18px;padding:18px;text-align:center;font-weight:900;color:var(--navy)}.step small{display:block;font-weight:600;color:var(--muted);margin-top:6px}.activity,.example,.teacher{border-radius:24px;padding:24px;margin-top:24px;border:1px solid}.activity{background:#ecfeff;border-color:#a5f3fc}.example{background:#fff7ed;border-color:#fed7aa}.teacher{background:#f0fdf4;border-color:#bbf7d0}.activity strong,.example strong,.teacher strong{color:#0e7490}.table-wrap{overflow:auto;background:white;border:1px solid var(--line);border-radius:18px}table{border-collapse:collapse;width:100%;min-width:780px}th,td{padding:13px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}th{background:#eff6ff;color:var(--navy)}tr:last-child td{border-bottom:0}.checklist label{display:block;background:white;border:1px solid var(--line);border-radius:16px;padding:13px 16px;margin:10px 0;cursor:pointer}.checklist input{transform:scale(1.15);margin-right:10px}.quiz{background:white;border:1px solid var(--line);border-radius:24px;padding:24px;box-shadow:0 14px 30px rgba(15,23,42,.06)}.question{margin:0 0 14px;font-weight:900;color:var(--navy);font-size:1.1rem}.quiz button{display:block;width:100%;text-align:left;background:#f8fafc;border:1px solid var(--line);border-radius:14px;padding:12px 14px;margin:8px 0;cursor:pointer;font-weight:700}.quiz button.correct{background:#dcfce7;border-color:#86efac}.quiz button.wrong{background:#fee2e2;border-color:#fca5a5}.result{font-weight:900;margin-top:16px;color:var(--navy)}details{background:white;border:1px solid var(--line);border-radius:18px;margin:12px 0;padding:14px 18px}summary{font-weight:900;color:var(--navy);cursor:pointer}footer{padding:36px 20px;background:#0f172a;color:#cbd5e1;text-align:center}@media(max-width:960px){.grid,.grid-3,.grid-2,.flow,.hero-grid{grid-template-columns:1fr 1fr}.nav-inner{padding-inline:16px}}@media(max-width:760px){.hamburger{display:flex}.nav-links{position:fixed;left:0;right:0;top:64px;display:grid;grid-template-columns:1fr;gap:10px;background:rgba(255,255,255,.98);border-bottom:1px solid var(--line);padding:16px;box-shadow:0 18px 35px rgba(15,23,42,.12);max-height:calc(100vh - 64px);overflow:auto;transform:translateY(-125%);opacity:0;pointer-events:none;transition:.28s ease}.nav-links.open{transform:translateY(0);opacity:1;pointer-events:auto}.nav-links a{display:block;border-radius:16px;padding:13px 15px}.nav-brand{font-size:.95rem}}@media(max-width:620px){.grid,.grid-3,.grid-2,.flow,.hero-grid{grid-template-columns:1fr}header{padding:38px 16px 34px}section{padding:34px 16px}.card,.activity,.example,.teacher,.quiz{padding:18px;border-radius:20px}.section-title{align-items:flex-start}.num{width:38px;height:38px;border-radius:12px;flex:0 0 38px}table{min-width:640px}th,td{padding:11px}.hero-card{padding:15px}header p{font-size:1.05rem}}@media(max-width:420px){.nav-inner{padding:9px 12px}.nav-links{top:58px;max-height:calc(100vh - 58px)}h1{font-size:2.05rem}.lead{font-size:1rem}.section-title h2{font-size:1.45rem}.badge{font-size:.78rem}.quiz button{font-size:.94rem}}
+
+/* Actividades interactivas ampliadas */
+.toolbar{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0}.action-btn,.secondary-btn{appearance:none;border:0;border-radius:14px;padding:12px 16px;font-weight:900;cursor:pointer}.action-btn{background:var(--blue);color:white;box-shadow:0 10px 22px rgba(37,99,235,.18)}.secondary-btn{background:white;color:var(--navy);border:1px solid var(--line)}.score-panel{background:linear-gradient(135deg,#eff6ff,#ecfeff);border:1px solid #bfdbfe;border-radius:20px;padding:16px 18px;margin:16px 0;font-weight:900;color:var(--navy)}.question-list{display:grid;gap:16px}.question-card{background:white;border:1px solid var(--line);border-radius:22px;padding:20px;box-shadow:0 12px 26px rgba(15,23,42,.055)}.question-card h3{margin:0 0 12px;color:var(--navy);font-size:1.04rem}.options{display:grid;gap:8px}.option{display:flex;gap:10px;align-items:flex-start;border:1px solid var(--line);background:#f8fafc;border-radius:14px;padding:11px 12px;cursor:pointer;font-weight:700}.option:hover{border-color:#93c5fd;background:#eff6ff}.option input{margin-top:4px;transform:scale(1.12)}.feedback{display:none;margin-top:12px;padding:12px 14px;border-radius:14px;font-weight:750}.feedback.ok{display:block;background:#dcfce7;border:1px solid #86efac;color:#166534}.feedback.ko{display:block;background:#fee2e2;border:1px solid #fca5a5;color:#991b1b}.feedback.pending{display:block;background:#fff7ed;border:1px solid #fed7aa;color:#92400e}.mini{font-size:.92rem;color:var(--muted);font-weight:650}.quiz-top{display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:14px}.progress{height:12px;background:#e5e7eb;border-radius:999px;overflow:hidden;flex:1;min-width:180px}.progress span{display:block;height:100%;background:linear-gradient(90deg,var(--blue),var(--cyan));width:0%;transition:.25s}.quiz-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}.quiz .answer-btn{display:block;width:100%;text-align:left;background:#f8fafc;border:1px solid var(--line);border-radius:14px;padding:12px 14px;margin:8px 0;cursor:pointer;font-weight:800}.quiz .answer-btn:hover{background:#eff6ff;border-color:#93c5fd}.quiz .answer-btn.correct{background:#dcfce7;border-color:#86efac}.quiz .answer-btn.wrong{background:#fee2e2;border-color:#fca5a5}.quiz .answer-btn:disabled{cursor:not-allowed;opacity:.95}.hidden{display:none!important}@media(max-width:620px){.toolbar,.quiz-actions{display:grid}.action-btn,.secondary-btn{width:100%}.question-card{padding:16px}.quiz-top{display:block}.progress{margin-top:10px}}
+
+/* Menú hamburguesa permanente: escritorio, tablet y móvil */
+.hamburger{display:flex!important;}
+.nav-inner{position:relative;}
+.nav-links{
+  position:fixed!important;
+  top:64px!important;
+  right:max(18px,calc((100vw - 1160px)/2 + 18px))!important;
+  left:auto!important;
+  width:min(380px,calc(100vw - 32px))!important;
+  display:grid!important;
+  grid-template-columns:1fr!important;
+  gap:10px!important;
+  background:rgba(255,255,255,.985)!important;
+  border:1px solid var(--line)!important;
+  border-radius:22px!important;
+  padding:14px!important;
+  box-shadow:0 22px 50px rgba(15,23,42,.18)!important;
+  max-height:calc(100vh - 82px)!important;
+  overflow:auto!important;
+  transform:translateY(-14px) scale(.98)!important;
+  opacity:0!important;
+  pointer-events:none!important;
+  transition:.24s ease!important;
+  scrollbar-width:thin;
+}
+.nav-links.open{
+  transform:translateY(0) scale(1)!important;
+  opacity:1!important;
+  pointer-events:auto!important;
+}
+.nav-links a{
+  display:block!important;
+  width:100%!important;
+  border-radius:16px!important;
+  padding:12px 14px!important;
+  background:#f8fafc!important;
+  border:1px solid var(--line)!important;
+}
+.nav-links a:hover,.nav-links a:focus{
+  background:#eff6ff!important;
+  border-color:var(--blue)!important;
+}
+@media(max-width:760px){
+  .nav-links{
+    top:62px!important;
+    right:12px!important;
+    left:12px!important;
+    width:auto!important;
+    max-height:calc(100vh - 76px)!important;
+  }
+}
+@media(max-width:420px){
+  .nav-links{
+    top:58px!important;
+    right:10px!important;
+    left:10px!important;
+    max-height:calc(100vh - 70px)!important;
+  }
+}
+
+/* Botón flotante para subir arriba */
+.back-to-top{
+  position:fixed;
+  right:22px;
+  bottom:22px;
+  z-index:60;
+  width:52px;
+  height:52px;
+  border:0;
+  border-radius:999px;
+  background:linear-gradient(135deg,var(--blue),var(--cyan));
+  color:white;
+  font-size:1.45rem;
+  font-weight:950;
+  cursor:pointer;
+  box-shadow:0 16px 34px rgba(15,23,42,.25);
+  opacity:0;
+  visibility:hidden;
+  transform:translateY(14px);
+  transition:opacity .25s ease, transform .25s ease, visibility .25s ease;
+}
+.back-to-top.show{
+  opacity:1;
+  visibility:visible;
+  transform:translateY(0);
+}
+.back-to-top:hover,.back-to-top:focus{
+  outline:3px solid rgba(37,99,235,.22);
+  transform:translateY(-3px);
+}
+@media(max-width:620px){
+  .back-to-top{
+    right:16px;
+    bottom:16px;
+    width:48px;
+    height:48px;
+    font-size:1.25rem;
+  }
+}
+
+</style>
+</head>
+<body>
+<header><div class="wrap"><span class="badge">MF0986_3</span><span class="badge">UF0327 · 60 horas</span><span class="badge">Repaso ampliado</span><h1>Repaso de la primera UF</h1><p>Recurso web para repasar la UF0327: búsqueda y valoración de información, mecanografía, tratamiento de textos en Word, documentos profesionales, combinación de correspondencia y práctica final.</p><div class="hero-grid"><div class="hero-card">1. Buscar información fiable</div><div class="hero-card">2. Sintetizar y ordenar</div><div class="hero-card">3. Crear documentos Word</div><div class="hero-card">4. Evaluar con preguntas</div></div></div></header>
+<nav aria-label="Menú principal"><div class="nav-inner"><div class="nav-brand">UF0327 · Repaso</div><button class="hamburger" id="menuToggle" type="button" aria-label="Abrir menú" aria-controls="menuLinks" aria-expanded="false"><span></span><span></span><span></span></button><div class="nav-links" id="menuLinks"><a href="#mapa">Mapa</a><a href="#busqueda">Búsqueda</a><a href="#calidad">Calidad</a><a href="#sintesis">Síntesis</a><a href="#mecanografia">Mecanografía</a><a href="#word">Word</a><a href="#documentos">Documentos</a><a href="#combinacion">Combinación</a><a href="#casos">Casos reales</a><a href="#practica">Práctica</a><a href="#preguntas">Preguntas</a><a href="#quiz">Quiz</a></div></div></nav>
+<main>
+<section id="mapa"><div class="wrap"><div class="section-title"><div class="num">1</div><h2>Mapa de la unidad</h2></div><p class="lead">La UF se entiende como un proceso completo. Primero se detecta qué información hace falta, después se busca, se selecciona, se transforma en contenido útil y finalmente se presenta en un documento profesional.</p><div class="flow"><div class="step">Necesidad<small>¿Qué documento hace falta?</small></div><div class="step">Búsqueda<small>¿Dónde y cómo?</small></div><div class="step">Valoración<small>¿Es fiable?</small></div><div class="step">Síntesis<small>¿Qué es esencial?</small></div><div class="step">Word<small>Formato y estructura</small></div><div class="step">Entrega<small>Revisión final</small></div></div><div class="teacher"><strong>Dinámica inicial:</strong> pregunta al grupo qué hace que un documento parezca profesional. Anota respuestas en pizarra: claridad, orden, ortografía, formato, imágenes, tablas, encabezado, fecha, fuente de información.</div></div></section>
+<section id="busqueda"><div class="wrap"><div class="section-title"><div class="num">2</div><h2>Recopilación de información</h2></div><p class="lead">No basta con encontrar información. Hay que saber elegir la fuente adecuada según el documento que vamos a crear.</p><div class="grid"><article class="card blue"><h3>Fuentes internas</h3><p>Archivos de empresa, informes anteriores, bases de datos de clientes, manuales internos, registros y plantillas.</p></article><article class="card green"><h3>Fuentes externas</h3><p>Webs institucionales, prensa, portales especializados, bibliotecas virtuales, catálogos y páginas profesionales.</p></article><article class="card purple"><h3>Herramientas</h3><p>Buscadores, búsqueda avanzada, directorios, metabuscadores, portales y catálogos temáticos.</p></article><article class="card amber"><h3>Resultado esperado</h3><p>Información localizada, organizada, guardada y lista para ser tratada en un documento.</p></article></div><div class="activity"><strong>Actividad oral:</strong> “Tengo que crear un informe sobre hábitos saludables en la empresa”. Decide qué información buscarías, qué fuentes usarías y cómo comprobarías su fiabilidad.</div><div class="table-wrap"><table><thead><tr><th>Necesidad</th><th>Fuente recomendable</th><th>Ejemplo de búsqueda</th><th>Producto final</th></tr></thead><tbody><tr><td>Normas de aula</td><td>Documento interno del centro</td><td>“normas uso aula informática”</td><td>Aviso interno</td></tr><tr><td>Datos legales</td><td>Organismo oficial</td><td>site:boe.es protección datos</td><td>Informe o circular</td></tr><tr><td>Imágenes para un folleto</td><td>Banco con licencia clara</td><td>imágenes libres oficina formación</td><td>Documento promocional</td></tr><tr><td>Información técnica</td><td>Manual o web del fabricante</td><td>manual Word combinación correspondencia</td><td>Guía de procedimiento</td></tr></tbody></table></div></div></section>
+<section id="calidad"><div class="wrap"><div class="section-title"><div class="num">3</div><h2>Calidad, ética y legalidad</h2></div><p class="lead">La información profesional debe ser fiable, actual y respetuosa con la ley. Esto incluye derechos de autor, propiedad intelectual y protección de datos.</p><div class="grid grid-3"><article class="card blue"><h3>Checklist de fiabilidad</h3><ul><li>Autor o entidad identificada.</li><li>Fecha visible y actualizada.</li><li>Contenido contrastable.</li><li>Lenguaje objetivo.</li><li>Relación directa con el documento.</li></ul></article><article class="card green"><h3>Ética</h3><ul><li>No copiar y pegar sin criterio.</li><li>Citar o mencionar fuentes.</li><li>Evitar imágenes sin licencia.</li><li>No manipular datos.</li></ul></article><article class="card red"><h3>Protección de datos</h3><ul><li>No incluir datos personales innecesarios.</li><li>No difundir listados sin permiso.</li><li>Proteger documentos sensibles.</li><li>Revisar destinatarios antes de enviar.</li></ul></article></div><div class="example"><strong>Ejemplo real:</strong> si se elabora una circular con nombres, teléfonos o correos de alumnos/clientes, hay que revisar si esos datos son necesarios, quién puede acceder al documento y cómo se va a guardar.</div></div></section>
+<section id="sintesis"><div class="wrap"><div class="section-title"><div class="num">4</div><h2>Síntesis y organización</h2></div><p class="lead">Sintetizar no es copiar menos. Es comprender la información, separar lo principal de lo accesorio y redactar con palabras propias.</p><div class="grid grid-3"><article class="card blue"><h3>1. Objetivo</h3><p>¿Para qué se crea el documento? ¿Qué debe saber o hacer la persona que lo lea?</p></article><article class="card cyan"><h3>2. Comparación</h3><p>Contrastar varias fuentes, detectar coincidencias y separar hechos de opiniones.</p></article><article class="card green"><h3>3. Redacción</h3><p>Ordenar ideas, simplificar frases y adaptar el lenguaje al tipo de documento.</p></article></div><div class="activity"><strong>Mini práctica:</strong> entrega a los alumnos tres párrafos sobre un tema. Deben subrayar ideas principales, tachar información accesoria y redactar un resumen de 5 líneas.</div></div></section>
+<section id="mecanografia"><div class="wrap"><div class="section-title"><div class="num">5</div><h2>Mecanografía y ergonomía</h2></div><p class="lead">La mecanografía combina velocidad, precisión y postura corporal. En documentos profesionales, escribir rápido no sirve si el resultado contiene errores.</p><div class="grid"><article class="card blue"><h3>Teclado</h3><p>Línea dominante, línea superior, línea inferior y teclado numérico.</p></article><article class="card green"><h3>Teclas auxiliares</h3><p>Mayúsculas, signos ortográficos, signos numéricos, tabuladores y caracteres especiales.</p></article><article class="card purple"><h3>Postura</h3><p>Espalda apoyada, muñecas neutras, brazos relajados y pantalla a distancia cómoda.</p></article><article class="card amber"><h3>Práctica</h3><p>Copia, dictado, toma de notas, volcado de voz y revisión de errores.</p></article></div><div class="example"><strong>Ejemplo real:</strong> transcribir un aviso recibido por teléfono: “La reunión del departamento se traslada al aula 3 el miércoles a las 10:30”. Objetivo: escribirlo completo, sin faltas y con fecha/hora correctamente indicadas.</div></div></section>
+<section id="word"><div class="wrap"><div class="section-title"><div class="num">6</div><h2>Tratamiento de textos en Word</h2></div><p class="lead">El objetivo no es conocer botones aislados, sino aplicar el formato adecuado para que el documento sea legible, coherente y profesional.</p><div class="grid grid-3"><article class="card blue"><h3>Formato de carácter</h3><ul><li>Fuente y tamaño.</li><li>Negrita, cursiva y subrayado.</li><li>Color y efectos con moderación.</li><li>Uso de mayúsculas solo cuando proceda.</li></ul></article><article class="card green"><h3>Formato de párrafo</h3><ul><li>Alineación.</li><li>Interlineado.</li><li>Espaciado anterior y posterior.</li><li>Sangrías: primera línea, izquierda/derecha y francesa.</li></ul></article><article class="card purple"><h3>Estructura avanzada</h3><ul><li>Encabezado y pie.</li><li>Números de página.</li><li>Saltos y secciones.</li><li>Estilos, índices y tablas de contenido.</li></ul></article></div><div class="grid grid-3" style="margin-top:16px"><article class="card amber"><h3>Tablas</h3><p>Horarios, presupuestos, registros, comparativas, facturas y partes de incidencias.</p></article><article class="card cyan"><h3>Objetos e imágenes</h3><p>Logotipos, fotografías, gráficos, organigramas, ecuaciones, rótulos e hipervínculos.</p></article><article class="card red"><h3>Revisión</h3><p>Ortografía, gramática, sinónimos, contar palabras, vista previa e impresión.</p></article></div><div class="teacher"><strong>Consejo docente:</strong> repasa con dos versiones del mismo documento: una desordenada y otra profesional. El alumnado suele entender mejor el formato cuando compara resultados.</div></div></section>
+<section id="documentos"><div class="wrap"><div class="section-title"><div class="num">7</div><h2>Documentos profesionales habituales</h2></div><p class="lead">Una parte importante de la UF consiste en identificar qué documento conviene crear según la necesidad de comunicación.</p><div class="table-wrap"><table><thead><tr><th>Documento</th><th>Para qué sirve</th><th>Ejemplo real</th><th>Elementos recomendables</th></tr></thead><tbody><tr><td>Carta</td><td>Comunicación formal individual.</td><td>Oferta a un cliente.</td><td>Datos, saludo, cuerpo, despedida y firma.</td></tr><tr><td>Informe</td><td>Analizar datos y proponer conclusiones.</td><td>Informe de incidencias informáticas.</td><td>Índice, apartados, tablas y conclusiones.</td></tr><tr><td>Aviso</td><td>Informar de algo concreto y breve.</td><td>Cambio de aula o fecha.</td><td>Título claro, fecha, mensaje y responsable.</td></tr><tr><td>Circular</td><td>Comunicar a un grupo amplio.</td><td>Normas de inicio de curso.</td><td>Encabezado, destinatarios y puntos clave.</td></tr><tr><td>Certificado</td><td>Acreditar un hecho.</td><td>Asistencia a una formación.</td><td>Datos personales, hecho certificado, firma y sello.</td></tr><tr><td>Solicitud</td><td>Pedir algo formalmente.</td><td>Solicitud de material.</td><td>Datos del solicitante, petición y justificación.</td></tr></tbody></table></div></div></section>
+<section id="combinacion"><div class="wrap"><div class="section-title"><div class="num">8</div><h2>Plantillas, formularios y combinación</h2></div><p class="lead">Estos recursos permiten ahorrar tiempo, evitar errores y mantener una imagen coherente en documentos repetitivos.</p><div class="grid grid-3"><article class="card blue"><h3>Plantillas</h3><p>Documento base con estructura, estilos y elementos reutilizables. Ejemplo: justificante de asistencia a cursos.</p></article><article class="card green"><h3>Formularios</h3><p>Recogen datos de manera ordenada. Ejemplo: solicitud de inscripción o parte de incidencias.</p></article><article class="card purple"><h3>Combinación</h3><p>Documento principal + una única fuente de datos + campos personalizados.</p></article></div><div class="example"><strong>Ejemplo real de combinación:</strong> carta de oferta formativa enviada a 10 clientes. La fuente de datos incluye nombre, empresa, curso, fecha y descuento. La carta base inserta esos campos para crear cartas personalizadas.</div><details><summary>Pasos de combinación de correspondencia</summary><ol><li>Crear o revisar la fuente de datos.</li><li>Redactar el documento principal.</li><li>Insertar campos de combinación.</li><li>Vista previa de registros.</li><li>Finalizar y combinar.</li><li>Revisar el resultado final.</li></ol></details></div></section>
+<section id="casos"><div class="wrap"><div class="section-title"><div class="num">9</div><h2>Ejemplos reales de aplicación</h2></div><div class="grid grid-3"><article class="card blue"><h3>Caso 1 · Aviso interno</h3><p><strong>Situación:</strong> el centro cambia el aula de una sesión.</p><ul><li>Título claro.</li><li>Fecha y hora.</li><li>Texto breve.</li><li>Tabla con aula anterior/nueva.</li><li>Pie con responsable.</li></ul></article><article class="card green"><h3>Caso 2 · Carta comercial</h3><p><strong>Situación:</strong> una academia informa de una oferta formativa.</p><ul><li>Saludo personalizado.</li><li>Tabla con curso, horas y precio.</li><li>Campos combinados.</li><li>Despedida profesional.</li></ul></article><article class="card purple"><h3>Caso 3 · Informe breve</h3><p><strong>Situación:</strong> registrar incidencias frecuentes del aula.</p><ul><li>Introducción.</li><li>Tabla resumen.</li><li>Conclusiones.</li><li>Recomendaciones.</li><li>Fuentes consultadas.</li></ul></article></div><div class="grid grid-2" style="margin-top:16px"><article class="card amber"><h3>Caso 4 · Certificado</h3><p>Plantilla de justificante de asistencia con campos para nombre, DNI, curso, fechas, horas, firma y sello.</p></article><article class="card cyan"><h3>Caso 5 · Mini guía</h3><p>Documento de una página con pasos para guardar en PDF, nombrar archivos y enviar tareas por correo.</p></article></div></div></section>
+<section id="practica"><div class="wrap"><div class="section-title"><div class="num">10</div><h2>Práctica global de repaso</h2></div><p class="lead">Actividad para realizar en clase como simulación de evaluación práctica.</p><div class="grid grid-3"><article class="card blue"><h3>Documento</h3><p>Crea un aviso interno sobre uso responsable de equipos informáticos en un centro de formación.</p></article><article class="card green"><h3>Debe incluir</h3><ul><li>Título y subtítulo.</li><li>4 párrafos.</li><li>Lista de normas.</li><li>Tabla de incidencias.</li><li>Imagen o icono.</li><li>Encabezado, pie y número de página.</li></ul></article><article class="card purple"><h3>Entrega</h3><ul><li>DOCX editable.</li><li>PDF final.</li><li>Nombre correcto.</li><li>Ortografía revisada.</li><li>Fuentes consultadas al final.</li></ul></article></div><h3>Checklist final del alumno</h3><div class="checklist"><label><input type="checkbox"> He definido el objetivo del documento.</label><label><input type="checkbox"> He usado información fiable y la he contrastado.</label><label><input type="checkbox"> He redactado con mis palabras.</label><label><input type="checkbox"> El formato de carácter y párrafo es uniforme.</label><label><input type="checkbox"> La tabla se lee correctamente.</label><label><input type="checkbox"> La imagen está bien colocada y no molesta al texto.</label><label><input type="checkbox"> Hay encabezado, pie y número de página cuando procede.</label><label><input type="checkbox"> He revisado ortografía, nombre de archivo y exportación a PDF.</label></div></div></section>
+<section id="preguntas"><div class="wrap"><div class="section-title"><div class="num">11</div><h2>Batería interactiva de preguntas</h2></div><p class="lead">Ahora la batería se puede contestar directamente en la web. Cada pregunta se corrige al momento y, si hay error, muestra una explicación para reforzar el aprendizaje.</p><div class="score-panel" id="batterySummary">Preguntas contestadas: 0 · Aciertos: 0 · Errores: 0</div><div class="toolbar"><button class="action-btn" id="checkAllBattery" type="button">Corregir batería completa</button><button class="secondary-btn" id="resetBattery" type="button">Reiniciar batería</button><button class="secondary-btn" id="showAnswersBattery" type="button">Mostrar soluciones</button></div><div class="question-list" id="batteryBox"></div></div></section>
+<section id="quiz"><div class="wrap"><div class="section-title"><div class="num">12</div><h2>Quiz ampliado de repaso</h2></div><p class="lead">Quiz de 20 preguntas seleccionadas de la batería. Sirve para hacer una dinámica rápida al final de la clase o una autoevaluación individual.</p><div class="quiz" id="quizBox"></div></div></section>
+</main>
+<footer>UF0327 · Recurso ampliado de repaso · Elaboración, tratamiento y presentación de documentos de trabajo</footer>
+<button class="back-to-top" id="backToTop" type="button" aria-label="Subir arriba" title="Subir arriba">↑</button>
+
+<script>
+
+const backToTop=document.getElementById('backToTop');
+window.addEventListener('scroll',()=>{
+  backToTop.classList.toggle('show',window.scrollY>420);
+});
+backToTop.addEventListener('click',()=>{
+  window.scrollTo({top:0,behavior:'smooth'});
+  closeMenu();
+});
+
+const menuToggle=document.getElementById('menuToggle');
+const menuLinks=document.getElementById('menuLinks');
+function closeMenu(){
+  menuLinks.classList.remove('open');
+  menuToggle.setAttribute('aria-expanded','false');
+  menuToggle.setAttribute('aria-label','Abrir menú');
+  document.body.classList.remove('no-scroll');
+}
+menuToggle.addEventListener('click',()=>{
+  const isOpen=menuLinks.classList.toggle('open');
+  menuToggle.setAttribute('aria-expanded',String(isOpen));
+  menuToggle.setAttribute('aria-label',isOpen?'Cerrar menú':'Abrir menú');
+  document.body.classList.toggle('no-scroll',isOpen);
+});
+menuLinks.querySelectorAll('a').forEach(link=>link.addEventListener('click',closeMenu));
+window.addEventListener('keydown',e=>{if(e.key==='Escape') closeMenu();});
+
+const questions=[
+  {
+    "q": "¿Qué es una fuente de información fiable?",
+    "a": [
+      "La que aparece primero en Google",
+      "La que permite identificar autoría, fecha, propósito y puede contrastarse",
+      "La que tiene más imágenes"
+    ],
+    "ok": 1,
+    "exp": "Una fuente fiable permite comprobar quién la publica, cuándo se actualizó, con qué finalidad y si coincide con otras fuentes serias."
+  },
+  {
+    "q": "¿Qué diferencia hay entre navegador y motor de búsqueda?",
+    "a": [
+      "Son exactamente lo mismo",
+      "El motor de búsqueda solo sirve para escribir textos",
+      "El navegador abre páginas web y el motor de búsqueda localiza información"
+    ],
+    "ok": 2,
+    "exp": "Chrome, Edge o Firefox son navegadores; Google, Bing o DuckDuckGo son motores de búsqueda."
+  },
+  {
+    "q": "¿Para qué sirven las comillas en una búsqueda?",
+    "a": [
+      "Para descargar imágenes automáticamente",
+      "Para buscar una frase exacta",
+      "Para traducir una página"
+    ],
+    "ok": 1,
+    "exp": "Las comillas obligan al buscador a localizar esa expresión literal, por ejemplo “modelo de carta comercial”."
+  },
+  {
+    "q": "¿Qué operador permite excluir una palabra en una búsqueda?",
+    "a": [
+      "El signo menos (-)",
+      "El signo igual (=)",
+      "El símbolo de porcentaje (%)"
+    ],
+    "ok": 0,
+    "exp": "El signo menos excluye términos: plantilla factura -gratis puede quitar resultados que incluyan la palabra gratis."
+  },
+  {
+    "q": "¿Qué dato ayuda especialmente a comprobar si una información está actualizada?",
+    "a": [
+      "El color de la página",
+      "El número de párrafos",
+      "La fecha de publicación o revisión"
+    ],
+    "ok": 2,
+    "exp": "La fecha permite valorar si el contenido sigue vigente, sobre todo en normativa, tecnología o procedimientos."
+  },
+  {
+    "q": "¿Qué significa contrastar información?",
+    "a": [
+      "Cambiar el tipo de letra",
+      "Comparar varias fuentes antes de dar algo por válido",
+      "Copiar el primer resultado"
+    ],
+    "ok": 1,
+    "exp": "Contrastar consiste en comprobar la información en más de una fuente para reducir errores o sesgos."
+  },
+  {
+    "q": "¿Qué fuente sería más adecuada para consultar normativa oficial?",
+    "a": [
+      "Un boletín oficial o página institucional",
+      "Un comentario anónimo en un foro",
+      "Una imagen compartida sin autor"
+    ],
+    "ok": 0,
+    "exp": "Para normativa conviene acudir a fuentes oficiales porque son las que publican el texto válido o actualizado."
+  },
+  {
+    "q": "¿Qué debemos revisar antes de usar una imagen de Internet en un documento?",
+    "a": [
+      "Solo que sea bonita",
+      "Solo que tenga muchos colores",
+      "La licencia, autoría y condiciones de uso"
+    ],
+    "ok": 2,
+    "exp": "Aunque una imagen esté en Internet, puede tener derechos de autor. Hay que revisar licencia y atribución."
+  },
+  {
+    "q": "¿Qué información personal conviene evitar si no es necesaria?",
+    "a": [
+      "La fecha del día",
+      "Datos personales como DNI, teléfono o dirección",
+      "El título del documento"
+    ],
+    "ok": 1,
+    "exp": "Por protección de datos, solo se deben usar los datos estrictamente necesarios para el objetivo del documento."
+  },
+  {
+    "q": "¿Qué es una idea principal?",
+    "a": [
+      "La información más importante de un texto",
+      "Una palabra decorativa",
+      "Un dato sin relación"
+    ],
+    "ok": 0,
+    "exp": "La idea principal resume lo esencial: aquello que no se puede quitar sin perder el sentido."
+  },
+  {
+    "q": "¿Qué significa sintetizar información?",
+    "a": [
+      "Copiar todo literalmente",
+      "Añadir más texto sin revisar",
+      "Seleccionar, ordenar y redactar con palabras propias lo más importante"
+    ],
+    "ok": 2,
+    "exp": "Sintetizar no es recortar al azar: implica comprender, seleccionar y reorganizar la información relevante."
+  },
+  {
+    "q": "¿Qué es más recomendable al resumir información de varias fuentes?",
+    "a": [
+      "Usar solo la fuente más corta",
+      "Indicar las fuentes consultadas y redactar con palabras propias",
+      "Pegar fragmentos sin citar"
+    ],
+    "ok": 1,
+    "exp": "Un resumen profesional debe evitar el copia-pega y dejar claro de dónde procede la información."
+  },
+  {
+    "q": "¿Qué criterio ayuda a distinguir una opinión de un hecho?",
+    "a": [
+      "El hecho puede comprobarse con datos; la opinión expresa una valoración",
+      "La opinión siempre está en negrita",
+      "El hecho siempre aparece al final"
+    ],
+    "ok": 0,
+    "exp": "Un hecho es verificable; una opinión depende del punto de vista de quien escribe."
+  },
+  {
+    "q": "¿Qué mejora la ergonomía al trabajar con teclado?",
+    "a": [
+      "Escribir con la pantalla muy baja",
+      "Apoyar las muñecas de cualquier manera",
+      "Mantener una postura adecuada de espalda, brazos, muñecas y pantalla"
+    ],
+    "ok": 2,
+    "exp": "La ergonomía reduce molestias y ayuda a trabajar mejor durante más tiempo."
+  },
+  {
+    "q": "¿Qué conviene priorizar al aprender mecanografía?",
+    "a": [
+      "Mirar siempre el teclado",
+      "La precisión antes que la velocidad",
+      "La velocidad aunque haya muchos errores"
+    ],
+    "ok": 1,
+    "exp": "Primero se automatiza la posición y se reducen errores; la velocidad llega después con práctica."
+  },
+  {
+    "q": "¿Qué es la línea dominante del teclado?",
+    "a": [
+      "La fila central donde descansan los dedos",
+      "La fila de números",
+      "La tecla de espacio"
+    ],
+    "ok": 0,
+    "exp": "La línea dominante es la fila base, normalmente ASDF-JKLÑ en teclado español."
+  },
+  {
+    "q": "¿Para qué sirve el teclado numérico?",
+    "a": [
+      "Para insertar imágenes",
+      "Para cambiar el idioma del documento",
+      "Para introducir números y operaciones con rapidez"
+    ],
+    "ok": 2,
+    "exp": "El teclado numérico agiliza la introducción de importes, cantidades y datos numéricos."
+  },
+  {
+    "q": "¿Qué se debe hacer después de transcribir un texto?",
+    "a": [
+      "Cambiarlo todo a mayúsculas",
+      "Revisar errores de escritura, puntuación y formato",
+      "Cerrar sin guardar"
+    ],
+    "ok": 1,
+    "exp": "La revisión final evita errores que pueden afectar a la profesionalidad del documento."
+  },
+  {
+    "q": "¿Qué modifica el formato de carácter?",
+    "a": [
+      "Fuente, tamaño, negrita, cursiva, subrayado y color",
+      "Interlineado y sangrías",
+      "Márgenes de página"
+    ],
+    "ok": 0,
+    "exp": "El formato de carácter afecta a letras o palabras concretas, no a la estructura completa del párrafo."
+  },
+  {
+    "q": "¿Qué modifica el formato de párrafo?",
+    "a": [
+      "Solo el color de la letra",
+      "El nombre del archivo",
+      "Alineación, sangrías, interlineado y espaciado"
+    ],
+    "ok": 2,
+    "exp": "El formato de párrafo controla cómo se coloca y separa un bloque de texto."
+  },
+  {
+    "q": "¿Para qué sirve la sangría de primera línea?",
+    "a": [
+      "Para borrar el texto seleccionado",
+      "Para desplazar solo el inicio del párrafo",
+      "Para insertar una tabla"
+    ],
+    "ok": 1,
+    "exp": "La sangría de primera línea ayuda a marcar visualmente el comienzo de cada párrafo."
+  },
+  {
+    "q": "¿Qué evita usar correctamente el espaciado entre párrafos?",
+    "a": [
+      "Pulsar Enter muchas veces para separar textos",
+      "Guardar el archivo",
+      "Insertar números de página"
+    ],
+    "ok": 0,
+    "exp": "El espaciado profesional se configura desde Párrafo; no se debe simular con muchos saltos de línea."
+  },
+  {
+    "q": "¿Qué alineación suele dar aspecto formal a textos largos?",
+    "a": [
+      "Siempre centrada",
+      "Siempre alineada a la derecha",
+      "Justificada, si se usa con criterio"
+    ],
+    "ok": 2,
+    "exp": "La justificación puede mejorar la apariencia de informes y cartas, aunque hay que revisar espacios raros."
+  },
+  {
+    "q": "¿Qué es una lista numerada?",
+    "a": [
+      "Una imagen con números",
+      "Una secuencia ordenada de pasos o elementos",
+      "Un párrafo sin formato"
+    ],
+    "ok": 1,
+    "exp": "Se usa cuando el orden importa: pasos, fases, instrucciones o prioridades."
+  },
+  {
+    "q": "¿Qué es una lista con viñetas?",
+    "a": [
+      "Una relación de elementos sin orden obligatorio",
+      "Un índice automático",
+      "Un tipo de encabezado"
+    ],
+    "ok": 0,
+    "exp": "Las viñetas sirven para enumerar ideas de forma clara sin indicar jerarquía temporal."
+  },
+  {
+    "q": "¿Qué herramienta ayuda a detectar faltas en Word?",
+    "a": [
+      "WordArt",
+      "El zoom",
+      "El corrector ortográfico y gramatical"
+    ],
+    "ok": 2,
+    "exp": "El corrector ayuda, pero no sustituye la lectura final porque puede no detectar todos los errores."
+  },
+  {
+    "q": "¿Para qué sirve “Buscar y reemplazar”?",
+    "a": [
+      "Para crear una tabla automáticamente",
+      "Para localizar texto y sustituirlo de forma controlada",
+      "Para comprimir imágenes"
+    ],
+    "ok": 1,
+    "exp": "Es útil para cambiar términos repetidos, corregir nombres o unificar expresiones."
+  },
+  {
+    "q": "¿Para qué sirve el encabezado?",
+    "a": [
+      "Para repetir información en la parte superior de las páginas",
+      "Para cambiar el tamaño de las imágenes",
+      "Para ocultar texto"
+    ],
+    "ok": 0,
+    "exp": "En documentos profesionales puede incluir título, entidad, fecha o referencia."
+  },
+  {
+    "q": "¿Para qué sirve el pie de página?",
+    "a": [
+      "Para borrar páginas",
+      "Para insertar una portada automáticamente",
+      "Para incluir información inferior como número de página, fecha o autoría"
+    ],
+    "ok": 2,
+    "exp": "El pie ayuda a identificar y ordenar documentos, especialmente si tienen varias páginas."
+  },
+  {
+    "q": "¿Qué elemento ayuda a orientarse en documentos largos?",
+    "a": [
+      "Letra muy pequeña",
+      "Número de página",
+      "Color aleatorio"
+    ],
+    "ok": 1,
+    "exp": "La numeración permite ubicar al lector y citar partes del documento."
+  },
+  {
+    "q": "¿Qué es una tabla en Word?",
+    "a": [
+      "Una estructura de filas y columnas para organizar información",
+      "Un dibujo decorativo",
+      "Un tipo de fuente"
+    ],
+    "ok": 0,
+    "exp": "Las tablas facilitan presentar horarios, importes, comparativas o registros."
+  },
+  {
+    "q": "¿Qué operación permite unir dos celdas de una tabla?",
+    "a": [
+      "Justificar texto",
+      "Cambiar idioma",
+      "Combinar celdas"
+    ],
+    "ok": 2,
+    "exp": "Combinar celdas permite crear encabezados o bloques más amplios dentro de una tabla."
+  },
+  {
+    "q": "¿Qué conviene hacer antes de insertar una imagen en un documento profesional?",
+    "a": [
+      "Insertarla sin revisar",
+      "Comprobar tamaño, calidad, licencia y relación con el contenido",
+      "Ponerla siempre enorme"
+    ],
+    "ok": 1,
+    "exp": "Una imagen debe ayudar a comprender, no molestar ni ocupar espacio sin sentido."
+  },
+  {
+    "q": "¿Qué significa ajustar texto alrededor de una imagen?",
+    "a": [
+      "Definir cómo se coloca el texto respecto a la imagen",
+      "Cambiar la contraseña del documento",
+      "Eliminar el fondo automáticamente"
+    ],
+    "ok": 0,
+    "exp": "El ajuste de texto controla si la imagen queda en línea, cuadrada, estrecha, detrás del texto, etc."
+  },
+  {
+    "q": "¿Qué tipo de documento acredita o certifica un hecho?",
+    "a": [
+      "Circular",
+      "Nota interior",
+      "Certificado"
+    ],
+    "ok": 2,
+    "exp": "Un certificado confirma formalmente un dato, asistencia, realización o situación."
+  },
+  {
+    "q": "¿Qué documento se usa para analizar información y presentar conclusiones?",
+    "a": [
+      "Etiqueta",
+      "Informe",
+      "Saluda"
+    ],
+    "ok": 1,
+    "exp": "El informe reúne datos, análisis y conclusiones para tomar decisiones o dejar constancia."
+  },
+  {
+    "q": "¿Qué documento se utiliza para comunicar una información breve a varias personas?",
+    "a": [
+      "Aviso o comunicado",
+      "Factura compleja",
+      "Manual técnico completo"
+    ],
+    "ok": 0,
+    "exp": "Un aviso debe ser claro, breve y fácil de entender."
+  },
+  {
+    "q": "¿Qué es una plantilla?",
+    "a": [
+      "Una imagen sin editar",
+      "Un archivo dañado",
+      "Un documento base reutilizable con estructura y formato predefinidos"
+    ],
+    "ok": 2,
+    "exp": "Las plantillas ahorran tiempo y aseguran uniformidad en documentos repetidos."
+  },
+  {
+    "q": "¿Qué ventaja tiene usar estilos en Word?",
+    "a": [
+      "Evitar guardar el documento",
+      "Mantener formato uniforme y facilitar índices o cambios globales",
+      "Hacer que el archivo pese más"
+    ],
+    "ok": 1,
+    "exp": "Los estilos permiten aplicar formatos coherentes a títulos, subtítulos y texto normal."
+  },
+  {
+    "q": "¿Qué se debe revisar antes de imprimir o entregar un documento?",
+    "a": [
+      "Vista previa, márgenes, páginas, ortografía y formato",
+      "Solo el color del icono",
+      "Nada si ya está escrito"
+    ],
+    "ok": 0,
+    "exp": "La revisión final evita páginas cortadas, errores de diseño o fallos de contenido."
+  },
+  {
+    "q": "¿Qué formato suele ser adecuado para entregar una versión final no editable?",
+    "a": [
+      "TXT sin formato",
+      "Archivo temporal",
+      "PDF"
+    ],
+    "ok": 2,
+    "exp": "PDF conserva mejor el aspecto del documento y evita modificaciones accidentales."
+  },
+  {
+    "q": "¿Qué debería incluir un nombre de archivo profesional?",
+    "a": [
+      "Un nombre genérico como documento1",
+      "Actividad, tema, nombre o fecha de forma clara",
+      "Solo emojis"
+    ],
+    "ok": 1,
+    "exp": "Un nombre claro facilita localizar, ordenar y corregir documentos."
+  },
+  {
+    "q": "¿Qué necesita una combinación de correspondencia sencilla?",
+    "a": [
+      "Documento principal y una fuente de datos",
+      "Tres documentos principales distintos",
+      "Solo una imagen"
+    ],
+    "ok": 0,
+    "exp": "La combinación usa un documento base y una tabla de datos para generar documentos personalizados."
+  },
+  {
+    "q": "¿Qué es la fuente de datos en una combinación de correspondencia?",
+    "a": [
+      "El color de la carta",
+      "La impresora del aula",
+      "La tabla con registros y campos personalizados"
+    ],
+    "ok": 2,
+    "exp": "La fuente de datos contiene campos como Nombre, Apellidos, Curso o Importe."
+  },
+  {
+    "q": "¿Qué problema provoca una fuente de datos desordenada?",
+    "a": [
+      "Reduce automáticamente las páginas",
+      "Puede generar errores en los campos combinados",
+      "Hace que la carta sea más bonita"
+    ],
+    "ok": 1,
+    "exp": "Si los encabezados, registros o datos están mal, los documentos combinados saldrán incorrectos."
+  },
+  {
+    "q": "¿Qué es un campo de combinación?",
+    "a": [
+      "Un marcador que inserta datos personalizados desde la fuente",
+      "Una imagen de fondo",
+      "Un tipo de margen"
+    ],
+    "ok": 0,
+    "exp": "Por ejemplo, «Nombre» inserta el nombre correspondiente en cada carta generada."
+  },
+  {
+    "q": "¿Por qué conviene usar vista previa antes de finalizar una combinación?",
+    "a": [
+      "Para cambiar el monitor",
+      "Para borrar la tabla de datos",
+      "Para comprobar que cada registro se inserta correctamente"
+    ],
+    "ok": 2,
+    "exp": "La vista previa ayuda a detectar campos mal colocados, datos incompletos o errores de formato."
+  },
+  {
+    "q": "¿Qué significa interoperar entre aplicaciones?",
+    "a": [
+      "Cerrar todos los programas",
+      "Integrar datos u objetos de distintos programas en un documento",
+      "Usar solo Word sin guardar"
+    ],
+    "ok": 1,
+    "exp": "Por ejemplo, insertar una tabla de Excel, una imagen o un gráfico dentro de Word."
+  },
+  {
+    "q": "¿Qué medida protege mejor la documentación digital?",
+    "a": [
+      "Guardar copias de seguridad y proteger archivos sensibles",
+      "Guardar todo en el escritorio sin orden",
+      "Compartir contraseñas"
+    ],
+    "ok": 0,
+    "exp": "Las copias y permisos reducen el riesgo de pérdida o acceso indebido."
+  },
+  {
+    "q": "¿Qué actitud profesional se espera al elaborar documentos?",
+    "a": [
+      "Rapidez sin revisar",
+      "Copiar y pegar sin pensar",
+      "Claridad, orden, revisión, respeto a derechos y protección de datos"
+    ],
+    "ok": 2,
+    "exp": "Un buen documento no solo se ve bien: también es fiable, legal, comprensible y útil."
+  }
+];
+
+const letters=['A','B','C'];
+const batteryBox=document.getElementById('batteryBox');
+const batterySummary=document.getElementById('batterySummary');
+
+function renderBattery(){
+  batteryBox.innerHTML='';
+  questions.forEach((item,index)=>{
+    const card=document.createElement('article');
+    card.className='question-card';
+    card.dataset.index=index;
+    card.innerHTML=`<h3>${index+1}. ${item.q}</h3><div class="options">${item.a.map((text,i)=>`<label class="option"><input type="radio" name="battery_${index}" value="${i}"><span><strong>${letters[i]})</strong> ${text}</span></label>`).join('')}</div><div class="toolbar"><button class="action-btn check-one" type="button">Corregir esta pregunta</button><button class="secondary-btn clear-one" type="button">Limpiar</button></div><div class="feedback" id="fb_${index}"></div>`;
+    batteryBox.appendChild(card);
+  });
+  attachBatteryEvents();
+  updateBatterySummary();
+}
+
+function correctBatteryQuestion(index, showPending=true){
+  const item=questions[index];
+  const card=batteryBox.querySelector(`[data-index="${index}"]`);
+  const checked=card.querySelector(`input[name="battery_${index}"]:checked`);
+  const feedback=card.querySelector(`#fb_${index}`);
+  feedback.className='feedback';
+  if(!checked){
+    if(showPending){
+      feedback.classList.add('pending');
+      feedback.innerHTML='Selecciona una respuesta antes de corregir esta pregunta.';
+    }
+    card.dataset.state='pending';
+    return false;
+  }
+  const chosen=Number(checked.value);
+  if(chosen===item.ok){
+    feedback.classList.add('ok');
+    feedback.innerHTML=`Correcto. <span class="mini">${item.exp}</span>`;
+    card.dataset.state='ok';
+    return true;
+  }
+  feedback.classList.add('ko');
+  feedback.innerHTML=`No es correcto. La respuesta adecuada es <strong>${letters[item.ok]}) ${item.a[item.ok]}</strong>. <br><span class="mini">${item.exp}</span>`;
+  card.dataset.state='ko';
+  return false;
+}
+
+function updateBatterySummary(){
+  const cards=[...batteryBox.querySelectorAll('.question-card')];
+  const answered=cards.filter(card=>card.querySelector('input:checked')).length;
+  const ok=cards.filter(card=>card.dataset.state==='ok').length;
+  const ko=cards.filter(card=>card.dataset.state==='ko').length;
+  batterySummary.textContent=`Preguntas contestadas: ${answered}/${questions.length} · Aciertos: ${ok} · Errores: ${ko}`;
+}
+
+function attachBatteryEvents(){
+  batteryBox.querySelectorAll('.check-one').forEach(btn=>btn.addEventListener('click',()=>{
+    const index=Number(btn.closest('.question-card').dataset.index);
+    correctBatteryQuestion(index);
+    updateBatterySummary();
+  }));
+  batteryBox.querySelectorAll('.clear-one').forEach(btn=>btn.addEventListener('click',()=>{
+    const card=btn.closest('.question-card');
+    card.querySelectorAll('input').forEach(i=>i.checked=false);
+    const fb=card.querySelector('.feedback');
+    fb.className='feedback'; fb.innerHTML='';
+    card.dataset.state='';
+    updateBatterySummary();
+  }));
+  batteryBox.querySelectorAll('input[type="radio"]').forEach(input=>input.addEventListener('change',()=>{
+    const card=input.closest('.question-card');
+    const fb=card.querySelector('.feedback');
+    fb.className='feedback'; fb.innerHTML='';
+    card.dataset.state='';
+    updateBatterySummary();
+  }));
+}
+
+document.getElementById('checkAllBattery').addEventListener('click',()=>{
+  questions.forEach((_,i)=>correctBatteryQuestion(i,false));
+  updateBatterySummary();
+  const firstPending=[...batteryBox.querySelectorAll('.question-card')].find(card=>!card.querySelector('input:checked'));
+  if(firstPending){
+    const fb=firstPending.querySelector('.feedback');
+    fb.className='feedback pending';
+    fb.innerHTML='Te falta contestar esta pregunta.';
+    firstPending.scrollIntoView({behavior:'smooth',block:'center'});
+  }
+});
+
+document.getElementById('resetBattery').addEventListener('click',()=>{
+  renderBattery();
+});
+
+document.getElementById('showAnswersBattery').addEventListener('click',()=>{
+  questions.forEach((item,i)=>{
+    const card=batteryBox.querySelector(`[data-index="${i}"]`);
+    const input=card.querySelector(`input[value="${item.ok}"]`);
+    input.checked=true;
+    correctBatteryQuestion(i,false);
+  });
+  updateBatterySummary();
+});
+
+let quizOrder=[];
+let current=0;
+let score=0;
+let locked=false;
+const quizBox=document.getElementById('quizBox');
+
+function createQuizOrder(){
+  const pool=[...questions.keys()];
+  for(let i=pool.length-1;i>0;i--){
+    const j=Math.floor(Math.random()*(i+1));
+    [pool[i],pool[j]]=[pool[j],pool[i]];
+  }
+  return pool.slice(0,20);
+}
+
+function startQuiz(){
+  quizOrder=createQuizOrder();
+  current=0; score=0; locked=false;
+  renderQuiz();
+}
+
+function renderQuiz(){
+  if(current>=quizOrder.length){
+    const pct=Math.round((score/quizOrder.length)*100);
+    let msg=pct>=80?'Muy buen repaso. El alumnado domina los puntos principales.':pct>=50?'Resultado aceptable, pero conviene revisar las explicaciones de los fallos.':'Conviene repasar de nuevo búsqueda, formato y documentos profesionales antes de la evaluación.';
+    quizBox.innerHTML=`<h3>Resultado final</h3><p class="result">${score}/${quizOrder.length} aciertos · ${pct}%</p><p>${msg}</p><div class="quiz-actions"><button class="action-btn" type="button" onclick="startQuiz()">Nuevo quiz aleatorio</button><button class="secondary-btn" type="button" onclick="document.getElementById('preguntas').scrollIntoView({behavior:'smooth'})">Practicar batería completa</button></div>`;
+    return;
+  }
+  const item=questions[quizOrder[current]];
+  const progress=Math.round((current/quizOrder.length)*100);
+  quizBox.innerHTML=`<div class="quiz-top"><strong>Pregunta ${current+1} de ${quizOrder.length}</strong><div class="progress" aria-label="Progreso del quiz"><span style="width:${progress}%"></span></div><strong>${score} aciertos</strong></div><p class="question">${item.q}</p>${item.a.map((x,i)=>`<button class="answer-btn" data-i="${i}" type="button"><strong>${letters[i]})</strong> ${x}</button>`).join('')}<div class="feedback" id="quizFeedback"></div><div class="quiz-actions"><button class="secondary-btn hidden" id="nextQuiz" type="button">Siguiente pregunta</button><button class="secondary-btn" type="button" onclick="startQuiz()">Reiniciar quiz</button></div>`;
+  locked=false;
+  quizBox.querySelectorAll('.answer-btn').forEach(btn=>btn.addEventListener('click',()=>answerQuiz(btn,item)));
+  quizBox.querySelector('#nextQuiz').addEventListener('click',()=>{current++; renderQuiz();});
+}
+
+function answerQuiz(btn,item){
+  if(locked) return;
+  locked=true;
+  const chosen=Number(btn.dataset.i);
+  const fb=document.getElementById('quizFeedback');
+  quizBox.querySelectorAll('.answer-btn').forEach(b=>b.disabled=true);
+  if(chosen===item.ok){
+    score++;
+    btn.classList.add('correct');
+    fb.className='feedback ok';
+    fb.innerHTML=`Correcto. <span class="mini">${item.exp}</span>`;
+  }else{
+    btn.classList.add('wrong');
+    quizBox.querySelector(`.answer-btn[data-i="${item.ok}"]`).classList.add('correct');
+    fb.className='feedback ko';
+    fb.innerHTML=`No es correcto. La respuesta adecuada es <strong>${letters[item.ok]}) ${item.a[item.ok]}</strong>. <br><span class="mini">${item.exp}</span>`;
+  }
+  document.getElementById('nextQuiz').classList.remove('hidden');
+}
+
+renderBattery();
+startQuiz();
+</script>
+</body>
+</html>
