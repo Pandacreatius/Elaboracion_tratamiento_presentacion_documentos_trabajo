@@ -1,4 +1,13 @@
-window.KAHOOT_FIREBASE_CONFIG = null;
+window.KAHOOT_FIREBASE_CONFIG = {
+  apiKey: "AIzaSyDHW0yDhkvcwKKuhTiNXBzZ-cJvKWFvFro",
+  authDomain: "preguntas-de-clase.firebaseapp.com",
+  databaseURL: "https://preguntas-de-clase-default-rtdb.europe-west1.firebasedatabase.app",
+  projectId: "preguntas-de-clase",
+  storageBucket: "preguntas-de-clase.firebasestorage.app",
+  messagingSenderId: "1037079137954",
+  appId: "1:1037079137954:web:429fb3e5c956e229f5d1fb",
+  measurementId: "G-S9429Z1TZH"
+};
 window.KAHOOT_ROOM_BASE_URL = 'https://pandacreatius.github.io/Elaboracion_tratamiento_presentacion_documentos_trabajo/';
 
 /*
