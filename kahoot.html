@@ -172,6 +172,7 @@ const soloSummary=document.getElementById('soloSummary');
 
 let db=null;
 let firebaseReady=false;
+let firebaseErrorMessage='';
 let hostName=(localStorage.getItem(HOST_NAME_KEY)||'').trim();
 let playerName=(localStorage.getItem(PLAYER_NAME_KEY)||'').trim();
 let playerId=(localStorage.getItem(PLAYER_ID_KEY)||'').trim();
@@ -237,12 +238,16 @@ function renderQr(value){
 function initFirebase(){
   if(!window.firebase || !window.KAHOOT_FIREBASE_CONFIG) return false;
   try{
-    const app=window.firebase.apps.length?window.firebase.app():window.firebase.initializeApp(window.KAHOOT_FIREBASE_CONFIG);
-    db=app.database();
+    if(!window.firebase.apps.length){
+      window.firebase.initializeApp(window.KAHOOT_FIREBASE_CONFIG);
+    }
+    db=window.firebase.database();
     firebaseReady=true;
+    firebaseErrorMessage='';
     return true;
   }catch(error){
     firebaseReady=false;
+    firebaseErrorMessage=error?.message || 'Firebase no ha podido inicializarse.';
     return false;
   }
 }
@@ -253,7 +258,7 @@ function setFirebaseUi(){
     firebaseHint.textContent='Firebase está activo. Ya puedes crear salas, compartir el QR y ver el ranking sincronizado.';
   }else{
     firebaseStatusText.innerHTML='<span class="dot off"></span>Multijugador pendiente de configuración.';
-    firebaseHint.innerHTML='Para activar las salas en vivo, añade tu configuración pública de Firebase en <strong>firebase-config.js</strong>. Mientras tanto puedes usar el modo individual.';
+    firebaseHint.innerHTML=`Para activar las salas en vivo, añade tu configuración pública de Firebase en <strong>firebase-config.js</strong>. Mientras tanto puedes usar el modo individual.${firebaseErrorMessage?`<br><br><strong>Detalle:</strong> ${escapeHtml(firebaseErrorMessage)}`:''}`;
   }
 }
 
