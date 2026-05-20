@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>UF0327 Play · Juego de Aula</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
+<style>
+:root{--ink:#07111f;--slate:#425466;--line:#d6dde7;--panel:#ffffff;--soft:#f3f7fb;--blue:#2563eb;--blue-deep:#143a8b;--mint:#0f766e;--amber:#d97706;--red:#dc2626;--glow:#dbeafe}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:"DM Sans",system-ui,sans-serif;color:var(--ink);background:radial-gradient(circle at top left,#cfe6ff 0,transparent 28%),radial-gradient(circle at top right,#d9fff4 0,transparent 20%),linear-gradient(180deg,#f5f9ff 0%,#edf3fb 48%,#f7fbff 100%)}a{color:inherit}.shell{max-width:1280px;margin:0 auto;padding:24px 20px 56px}.topbar{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:22px}.brand{display:flex;align-items:center;gap:12px;font-family:"Space Grotesk",sans-serif;font-weight:700}.brand-mark{width:44px;height:44px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(135deg,#0f172a,#2563eb);color:#fff;box-shadow:0 16px 28px rgba(37,99,235,.22)}.back-link{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-weight:700;color:var(--slate);padding:10px 14px;border-radius:999px;border:1px solid rgba(66,84,102,.18);background:rgba(255,255,255,.78);backdrop-filter:blur(12px)}.hero{display:grid;grid-template-columns:1.2fr .8fr;gap:18px;margin-bottom:18px}.hero-card,.status-card,.panel,.stage-card,.leaderboard-card{background:rgba(255,255,255,.84);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.88);border-radius:28px;box-shadow:0 24px 40px rgba(15,23,42,.08)}.hero-card{padding:30px}.hero-card h1{font-family:"Space Grotesk",sans-serif;font-size:clamp(2.5rem,5vw,4.4rem);line-height:.96;letter-spacing:-.05em;margin:10px 0 18px}.eyebrow{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;background:#e0ecff;color:var(--blue-deep);font-weight:700;font-size:.92rem}.hero-copy{max-width:720px;color:var(--slate);font-size:1.08rem;line-height:1.65}.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}.primary-btn,.secondary-btn,.ghost-btn{appearance:none;border:0;border-radius:16px;padding:14px 18px;font:inherit;font-weight:700;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:8px}.primary-btn{background:linear-gradient(135deg,var(--blue),#3b82f6);color:#fff;box-shadow:0 18px 28px rgba(37,99,235,.22)}.secondary-btn{background:#fff;color:var(--ink);border:1px solid var(--line)}.ghost-btn{background:#eef5ff;color:var(--blue-deep)}.status-card{padding:24px;display:grid;gap:18px}.status-card h2,.panel h3,.stage-card h3,.leaderboard-card h3{font-family:"Space Grotesk",sans-serif;margin:0 0 8px}.status-line{display:flex;align-items:center;gap:10px;font-weight:700}.dot{width:12px;height:12px;border-radius:999px;background:#94a3b8;box-shadow:0 0 0 8px rgba(148,163,184,.12)}.dot.live{background:#10b981;box-shadow:0 0 0 8px rgba(16,185,129,.16)}.dot.off{background:#ef4444;box-shadow:0 0 0 8px rgba(239,68,68,.14)}.chips{display:flex;flex-wrap:wrap;gap:10px}.chip{padding:9px 12px;border-radius:999px;background:#eef4fb;color:var(--blue-deep);font-size:.92rem;font-weight:700;border:1px solid #d9e7fb}.main-grid{display:grid;grid-template-columns:360px 1fr;gap:18px;align-items:start}.rail{display:grid;gap:18px}.panel{padding:22px}.panel p,.status-card p,.leaderboard-card p,.stage-card p{color:var(--slate);line-height:1.55}.form-grid{display:grid;gap:12px}.field-label{font-size:.92rem;font-weight:700;color:var(--ink)}.text-input{width:100%;padding:14px 15px;border-radius:16px;border:1px solid var(--line);background:#fff;font:inherit;color:var(--ink)}.text-input:focus{outline:3px solid rgba(37,99,235,.16);border-color:#8bb8ff}.room-code{font-family:"Space Grotesk",sans-serif;font-size:clamp(2.1rem,4vw,3rem);letter-spacing:.18em;font-weight:700;color:var(--ink);margin:6px 0}.micro{font-size:.92rem;color:var(--slate)}.qr-box{display:grid;place-items:center;min-height:240px;border-radius:24px;background:linear-gradient(180deg,#eff5ff 0,#fbfdff 100%);border:1px solid #dbe7fb;padding:18px;margin-top:14px}#roomQr{width:220px;max-width:100%;height:auto;background:#fff;padding:12px;border-radius:18px}.stage-card{padding:24px;min-height:620px}.stage-meta{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:12px}.stage-chip{padding:8px 12px;border-radius:999px;background:#f2f6fb;border:1px solid #dbe4ee;color:var(--blue-deep);font-size:.92rem;font-weight:700}.empty-state{display:grid;place-items:center;text-align:center;min-height:420px;padding:28px;border:1px dashed #ced8e5;border-radius:24px;background:linear-gradient(180deg,#f9fbff 0,#f2f7fd 100%)}.empty-state h3{margin:0 0 10px}.question{font-family:"Space Grotesk",sans-serif;font-size:clamp(1.4rem,2.2vw,2rem);line-height:1.15;letter-spacing:-.03em;margin:10px 0 18px}.progress{height:12px;background:#e5ebf2;border-radius:999px;overflow:hidden}.progress span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--blue),#22c55e)}.answer-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:18px}.answer-btn,.answer-card{display:flex;align-items:flex-start;gap:12px;width:100%;padding:16px 18px;border-radius:22px;border:1px solid var(--line);background:#fff;font:inherit;text-align:left;color:var(--ink)}.answer-btn{cursor:pointer}.answer-btn:hover{border-color:#8bb8ff;box-shadow:0 10px 18px rgba(37,99,235,.08);transform:translateY(-1px)}.answer-btn:disabled{cursor:not-allowed;transform:none}.answer-btn.correct,.answer-card.correct{background:#ecfdf5;border-color:#a7f3d0}.answer-btn.wrong,.answer-card.wrong{background:#fef2f2;border-color:#fecaca}.answer-key{flex:0 0 42px;width:42px;height:42px;border-radius:15px;display:grid;place-items:center;background:linear-gradient(135deg,#0f172a,#2563eb);color:#fff;font-family:"Space Grotesk",sans-serif;font-weight:700}.answer-btn.correct .answer-key,.answer-card.correct .answer-key{background:linear-gradient(135deg,#15803d,#34d399)}.answer-btn.wrong .answer-key,.answer-card.wrong .answer-key{background:linear-gradient(135deg,#b91c1c,#ef4444)}.feedback{margin-top:18px;padding:14px 16px;border-radius:18px;font-weight:700}.feedback.ok{background:#ecfdf5;border:1px solid #a7f3d0;color:#166534}.feedback.ko{background:#fef2f2;border:1px solid #fecaca;color:#991b1b}.feedback.pending{background:#fff7ed;border:1px solid #fed7aa;color:#9a3412}.toolbar{display:flex;flex-wrap:wrap;gap:12px;margin-top:18px}.leaderboard-card{padding:22px;margin-top:18px}.board-table{width:100%;border-collapse:collapse}.board-table th,.board-table td{padding:12px;border-bottom:1px solid #e6edf5;text-align:left}.board-table th{font-size:.88rem;text-transform:uppercase;letter-spacing:.05em;color:var(--slate)}.board-table tr:last-child td{border-bottom:0}.player-list{display:grid;gap:10px}.player-row{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:14px 16px;border-radius:18px;background:#f7faff;border:1px solid #e1eaf5}.subgrid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.aside-note{padding:14px 16px;border-radius:18px;background:#fff7ed;border:1px solid #fed7aa;color:#9a3412}.footer-note{text-align:center;margin-top:24px;color:var(--slate);font-size:.94rem}
+@media(max-width:1080px){.hero,.main-grid,.subgrid,.answer-grid{grid-template-columns:1fr}.stage-card{min-height:auto}}
+@media(max-width:640px){.shell{padding:16px 14px 44px}.topbar{display:grid}.hero-card,.status-card,.panel,.stage-card,.leaderboard-card{border-radius:24px}.hero-card{padding:24px}.hero-actions,.toolbar{display:grid}.primary-btn,.secondary-btn,.ghost-btn{width:100%}.room-code{letter-spacing:.12em}}
+</style>
+</head>
+<body>
+<div class="shell">
+  <div class="topbar">
+    <div class="brand">
+      <div class="brand-mark">P</div>
+      <div>
+        <div>UF0327 Play</div>
+        <div class="micro">Modo aula y juego individual</div>
+      </div>
+    </div>
+    <a class="back-link" href="index.html">Volver al repaso</a>
+  </div>
+
+  <section class="hero">
+    <article class="hero-card">
+      <span class="eyebrow">Juego de clase</span>
+      <h1>Un Kahoot más limpio, más claro y listo para aula.</h1>
+      <p class="hero-copy">Esta pantalla está separada del repaso para que la experiencia del juego tenga su propio ritmo. Aquí el alumnado entra por QR o código, el anfitrión controla la sala y la pregunta siempre ocupa el centro de la interfaz.</p>
+      <div class="hero-actions">
+        <a class="primary-btn" href="#host">Crear sala</a>
+        <a class="secondary-btn" href="#join">Unirse como jugador</a>
+        <button class="ghost-btn" id="copyDirectLinkBtn" type="button">Copiar enlace del juego</button>
+      </div>
+    </article>
+    <aside class="status-card">
+      <div>
+        <h2>Estado del sistema</h2>
+        <p id="firebaseStatusText" class="status-line"><span class="dot off"></span>Multijugador pendiente de configuración.</p>
+      </div>
+      <div class="chips">
+        <span class="chip">QR dinámico</span>
+        <span class="chip">Sala compartida</span>
+        <span class="chip">Ranking en vivo</span>
+      </div>
+      <div class="aside-note" id="firebaseHint">Para activar las salas en tiempo real, añade tu configuración pública de Firebase en <strong>firebase-config.js</strong>.</div>
+    </aside>
+  </section>
+
+  <div class="main-grid">
+    <div class="rail">
+      <section class="panel" id="host">
+        <h3>Anfitrión</h3>
+        <p>Crea una sala desde este dispositivo y controla el ritmo de la partida.</p>
+        <form class="form-grid" id="hostForm">
+          <label class="field-label" for="hostNameInput">Nombre del anfitrión</label>
+          <input class="text-input" id="hostNameInput" type="text" maxlength="40" placeholder="Ej. Fernando" />
+          <button class="primary-btn" type="submit">Activar anfitrión</button>
+        </form>
+        <div class="toolbar">
+          <button class="secondary-btn" id="createRoomBtn" type="button">Crear sala</button>
+          <button class="secondary-btn" id="copyRoomLinkBtn" type="button">Copiar acceso</button>
+        </div>
+        <div class="aside-note" id="hostStatusBox">Primero identifica al anfitrión y después crea una sala.</div>
+      </section>
+
+      <section class="panel" id="join">
+        <h3>Jugador</h3>
+        <p>Escanea el QR o escribe el código de sala para entrar directamente.</p>
+        <form class="form-grid" id="playerJoinForm">
+          <label class="field-label" for="playerJoinName">Nombre del jugador</label>
+          <input class="text-input" id="playerJoinName" type="text" maxlength="40" placeholder="Escribe tu nombre" />
+          <label class="field-label" for="playerRoomCode">Código de sala</label>
+          <input class="text-input" id="playerRoomCode" type="text" maxlength="6" placeholder="AB12CD" />
+          <button class="primary-btn" type="submit">Unirme a la sala</button>
+        </form>
+        <div class="aside-note" id="playerJoinStatus">Todavía no estás unido a ninguna sala.</div>
+      </section>
+
+      <section class="panel">
+        <h3>Sala activa</h3>
+        <div class="room-code" id="activeRoomCode">----</div>
+        <p class="micro" id="activeRoomLink">Aún no hay sala creada.</p>
+        <div class="qr-box">
+          <canvas id="roomQr" width="220" height="220" aria-label="QR de acceso a la sala"></canvas>
+        </div>
+      </section>
+    </div>
+
+    <div>
+      <section class="stage-card">
+        <div class="stage-meta">
+          <span class="stage-chip">Tablero principal</span>
+          <span class="stage-chip" id="stageModeChip">Esperando sala</span>
+        </div>
+        <div id="stageBox" class="empty-state">
+          <div>
+            <h3>Todo el juego en una sola superficie.</h3>
+            <p>La pregunta, el progreso y las respuestas aparecerán aquí. El panel lateral queda reservado para acceso y control, así evitamos que las secciones se monten unas sobre otras.</p>
+          </div>
+        </div>
+      </section>
+
+      <div class="subgrid">
+        <section class="leaderboard-card">
+          <h3>Jugadores conectados</h3>
+          <div id="playersBox" class="player-list">
+            <div class="player-row"><span>Aún no hay participantes en la sala.</span><span>0</span></div>
+          </div>
+        </section>
+        <section class="leaderboard-card">
+          <h3>Práctica individual</h3>
+          <p>Si todavía no quieres usar una sala, también puedes lanzar una partida local en este dispositivo.</p>
+          <div class="toolbar">
+            <button class="primary-btn" id="startSoloBtn" type="button">Iniciar modo individual</button>
+          </div>
+          <div id="soloSummary" class="aside-note">El modo individual guarda el mejor resultado en este navegador.</div>
+        </section>
+      </div>
+
+      <section class="leaderboard-card">
+        <h3>Marcador</h3>
+        <div id="leaderboardBox">
+          <p>El ranking aparecerá aquí cuando haya respuestas registradas.</p>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <p class="footer-note">UF0327 Play · Pantalla separada para juego de aula y repaso rápido</p>
+</div>
+
+<script src="questions-data.js"></script>
+<script src="firebase-config.js"></script>
+<script src="https://www.gstatic.com/firebasejs/12.7.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/12.7.0/firebase-database-compat.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/qrious@4.0.2/dist/qrious.min.js"></script>
+<script>
+const questions=window.UF0327_QUESTIONS||[];
+const letters=['A','B','C'];
+const SOLO_STORAGE_KEY='uf0327_kahoot_solo_scores_v2';
+const HOST_NAME_KEY='uf0327_multi_host_name_v2';
+const PLAYER_NAME_KEY='uf0327_multi_player_name_v2';
+const PLAYER_ID_KEY='uf0327_multi_player_id_v2';
+const ROOM_QUESTION_LIMIT=10;
+
+const firebaseStatusText=document.getElementById('firebaseStatusText');
+const firebaseHint=document.getElementById('firebaseHint');
+const copyDirectLinkBtn=document.getElementById('copyDirectLinkBtn');
+const hostForm=document.getElementById('hostForm');
+const hostNameInput=document.getElementById('hostNameInput');
+const createRoomBtn=document.getElementById('createRoomBtn');
+const copyRoomLinkBtn=document.getElementById('copyRoomLinkBtn');
+const hostStatusBox=document.getElementById('hostStatusBox');
+const playerJoinForm=document.getElementById('playerJoinForm');
+const playerJoinName=document.getElementById('playerJoinName');
+const playerRoomCode=document.getElementById('playerRoomCode');
+const playerJoinStatus=document.getElementById('playerJoinStatus');
+const activeRoomCode=document.getElementById('activeRoomCode');
+const activeRoomLink=document.getElementById('activeRoomLink');
+const stageModeChip=document.getElementById('stageModeChip');
+const stageBox=document.getElementById('stageBox');
+const playersBox=document.getElementById('playersBox');
+const leaderboardBox=document.getElementById('leaderboardBox');
+const startSoloBtn=document.getElementById('startSoloBtn');
+const soloSummary=document.getElementById('soloSummary');
+
+let db=null;
+let firebaseReady=false;
+let hostName=(localStorage.getItem(HOST_NAME_KEY)||'').trim();
+let playerName=(localStorage.getItem(PLAYER_NAME_KEY)||'').trim();
+let playerId=(localStorage.getItem(PLAYER_ID_KEY)||'').trim();
+let role='viewer';
+let activeRoom='';
+let roomData=null;
+let playersData={};
+let responsesData={};
+let roomUnsubs=[];
+let soloState=null;
+
+if(!playerId){
+  playerId=`player_${Math.random().toString(36).slice(2,10)}`;
+  localStorage.setItem(PLAYER_ID_KEY,playerId);
+}
+
+function escapeHtml(text){
+  return String(text).replace(/[&<>"']/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
+}
+
+function normalizeName(value){
+  return String(value||'').trim().replace(/\s+/g,' ');
+}
+
+function normalizeRoomCode(value){
+  return String(value||'').toUpperCase().replace(/[^A-Z0-9]/g,'').slice(0,6);
+}
+
+function shuffleOrder(limit){
+  const pool=[...questions.keys()];
+  for(let i=pool.length-1;i>0;i--){
+    const j=Math.floor(Math.random()*(i+1));
+    [pool[i],pool[j]]=[pool[j],pool[i]];
+  }
+  return pool.slice(0,Math.min(limit,pool.length));
+}
+
+function getBaseGameUrl(){
+  const configured=(window.KAHOOT_ROOM_BASE_URL||'').trim();
+  if(configured) return configured.replace(/\/+$/,'/')+'kahoot.html';
+  if(location.protocol.startsWith('http')) return `${location.origin}${location.pathname}`;
+  return 'https://pandacreatius.github.io/Elaboracion_tratamiento_presentacion_documentos_trabajo/kahoot.html';
+}
+
+function getJoinUrl(roomCode=''){
+  const url=new URL(getBaseGameUrl(),window.location.href);
+  if(roomCode) url.searchParams.set('room',roomCode);
+  url.hash=roomCode?'join':'';
+  return url.toString();
+}
+
+function renderQr(value){
+  new QRious({
+    element:document.getElementById('roomQr'),
+    value,
+    size:220,
+    level:'H',
+    background:'#ffffff',
+    foreground:'#07111f'
+  });
+}
+
+function initFirebase(){
+  if(!window.firebase || !window.KAHOOT_FIREBASE_CONFIG) return false;
+  try{
+    const app=window.firebase.apps.length?window.firebase.app():window.firebase.initializeApp(window.KAHOOT_FIREBASE_CONFIG);
+    db=app.database();
+    firebaseReady=true;
+    return true;
+  }catch(error){
+    firebaseReady=false;
+    return false;
+  }
+}
+
+function setFirebaseUi(){
+  if(firebaseReady){
+    firebaseStatusText.innerHTML='<span class="dot live"></span>Multijugador en tiempo real activo.';
+    firebaseHint.textContent='Firebase está activo. Ya puedes crear salas, compartir el QR y ver el ranking sincronizado.';
+  }else{
+    firebaseStatusText.innerHTML='<span class="dot off"></span>Multijugador pendiente de configuración.';
+    firebaseHint.innerHTML='Para activar las salas en vivo, añade tu configuración pública de Firebase en <strong>firebase-config.js</strong>. Mientras tanto puedes usar el modo individual.';
+  }
+}
+
+function setRoomVisuals(roomCode=''){
+  activeRoomCode.textContent=roomCode||'----';
+  const url=roomCode?getJoinUrl(roomCode):getJoinUrl();
+  activeRoomLink.textContent=roomCode?url:'Aún no hay sala creada.';
+  renderQr(url);
+}
+
+function clearRoomListeners(){
+  roomUnsubs.forEach(fn=>{try{fn();}catch(error){}});
+  roomUnsubs=[];
+}
+
+function getSortedPlayers(){
+  return Object.entries(playersData||{}).map(([id,player])=>({id,...player}))
+    .sort((a,b)=>(b.correctCount||0)-(a.correctCount||0) || String(a.name||'').localeCompare(String(b.name||''),'es'));
+}
+
+function getCurrentQuestion(){
+  if(!roomData?.questionOrder?.length) return null;
+  return questions[roomData.questionOrder[roomData.currentQuestionIndex||0]]||null;
+}
+
+function getRoundResponses(){
+  const round=String(roomData?.currentRound||1);
+  return responsesData?.[round]||{};
+}
+
+function renderPlayers(){
+  const players=getSortedPlayers();
+  if(!players.length){
+    playersBox.innerHTML='<div class="player-row"><span>Aún no hay participantes en la sala.</span><span>0</span></div>';
+    return;
+  }
+  playersBox.innerHTML=players.map(player=>`<div class="player-row"><strong>${escapeHtml(player.name||'Sin nombre')}</strong><span>${player.correctCount||0} aciertos</span></div>`).join('');
+}
+
+function renderLeaderboard(){
+  const players=getSortedPlayers();
+  if(!players.length){
+    leaderboardBox.innerHTML='<p>El ranking aparecerá aquí cuando haya respuestas registradas.</p>';
+    return;
+  }
+  leaderboardBox.innerHTML=`<table class="board-table"><thead><tr><th>Jugador</th><th>Aciertos</th><th>Estado</th></tr></thead><tbody>${players.map((player,index)=>`<tr><td>${index+1}. ${escapeHtml(player.name||'Sin nombre')}</td><td>${player.correctCount||0}</td><td>${activeRoom&&player.id===playerId?'Tú':''}</td></tr>`).join('')}</tbody></table>`;
+}
+
+function renderHostStatus(message){
+  hostStatusBox.textContent=message;
+}
+
+function renderPlayerStatus(message){
+  playerJoinStatus.innerHTML=message;
+}
+
+function renderWaitingState(title,text,chip='Esperando'){
+  stageModeChip.textContent=chip;
+  stageBox.className='empty-state';
+  stageBox.innerHTML=`<div><h3>${title}</h3><p>${text}</p></div>`;
+}
+
+function renderStage(){
+  if(soloState){
+    renderSoloStage();
+    return;
+  }
+  if(!activeRoom || !roomData){
+    renderWaitingState('Crea una sala o entra como jugador.','La superficie central queda reservada solo para el juego. El acceso y la configuración se mantienen al lado para que todo respire mejor.');
+    return;
+  }
+  const question=getCurrentQuestion();
+  const responses=getRoundResponses();
+  const answered=Object.keys(responses).length;
+  const totalPlayers=getSortedPlayers().length;
+  const status=roomData.status||'lobby';
+  if(status==='lobby'){
+    stageModeChip.textContent='Sala en espera';
+    stageBox.className='empty-state';
+    stageBox.innerHTML=`<div><h3>Sala ${activeRoom} lista.</h3><p>${role==='host'?'Cuando quieras, arranca la partida y la primera pregunta aparecerá aquí para toda la clase.':'Ya estás dentro. Espera a que el anfitrión lance la primera pregunta.'}</p>${role==='host'?'<div class="toolbar"><button class="primary-btn" id="startRoomBtn" type="button">Iniciar partida</button></div>':''}</div>`;
+    const startRoomBtn=document.getElementById('startRoomBtn');
+    if(startRoomBtn) startRoomBtn.addEventListener('click',startRoom);
+    return;
+  }
+  if(status==='finished'){
+    stageModeChip.textContent='Partida finalizada';
+    const mine=playersData[playerId];
+    stageBox.className='';
+    stageBox.innerHTML=`<h3>Partida terminada</h3><p class="micro">${role==='player'&&mine?`Has conseguido ${mine.correctCount||0} aciertos.`:'La sala ha cerrado esta partida.'}</p><div class="toolbar">${role==='host'?'<button class="primary-btn" id="restartRoomBtn" type="button">Crear nueva sala</button>':''}</div>`;
+    const restartBtn=document.getElementById('restartRoomBtn');
+    if(restartBtn) restartBtn.addEventListener('click',createRoom);
+    return;
+  }
+  const progress=Math.round(((roomData.currentQuestionIndex||0)/(roomData.totalQuestions||ROOM_QUESTION_LIMIT))*100);
+  const myResponse=responses[playerId];
+  stageModeChip.textContent=role==='host'?'Control de sala':'En juego';
+  stageBox.className='';
+  stageBox.innerHTML=`<div class="stage-meta"><span class="stage-chip">Sala ${activeRoom}</span><span class="stage-chip">Pregunta ${(roomData.currentQuestionIndex||0)+1} / ${roomData.totalQuestions||ROOM_QUESTION_LIMIT}</span><span class="stage-chip">${answered}/${totalPlayers||0} respuestas</span></div><div class="progress"><span style="width:${progress}%"></span></div><p class="question">${question?.q||'Esperando pregunta'}</p><div class="answer-grid">${(question?.a||[]).map((answer,index)=>role==='host'?`<div class="answer-card ${index===question.ok?'correct':''}"><span class="answer-key">${letters[index]}</span><div>${answer}</div></div>`:`<button class="answer-btn ${myResponse&&index===question.ok?'correct':''} ${myResponse&&index===myResponse.choiceIndex&&!myResponse.isCorrect?'wrong':''}" data-choice="${index}" type="button" ${myResponse?'disabled':''}><span class="answer-key">${letters[index]}</span><div>${answer}</div></button>`).join('')}</div>${role==='host'?`<div class="toolbar"><button class="primary-btn" id="nextQuestionBtn" type="button">Siguiente pregunta</button><button class="secondary-btn" id="finishRoomBtn" type="button">Finalizar partida</button></div><div class="feedback pending">El anfitrión ve la respuesta correcta y el número de respuestas recibidas para poder marcar el ritmo de la clase.</div>`:`<div class="feedback ${myResponse?(myResponse.isCorrect?'ok':'ko'):'pending'}">${myResponse?(myResponse.isCorrect?`Correcto. ${question.exp}`:`No es correcto. La respuesta adecuada es ${letters[question.ok]}) ${question.a[question.ok]}. ${question.exp}`):'Responde antes de que el anfitrión avance.'}</div>`}`;
+  if(role==='host'){
+    document.getElementById('nextQuestionBtn').addEventListener('click',advanceQuestion);
+    document.getElementById('finishRoomBtn').addEventListener('click',finishRoom);
+  }else{
+    stageBox.querySelectorAll('[data-choice]').forEach(button=>button.addEventListener('click',()=>submitAnswer(Number(button.dataset.choice))));
+  }
+}
+
+function subscribeRoom(roomCode){
+  clearRoomListeners();
+  const roomRef=db.ref(`kahootRooms/${roomCode}`);
+  const playersRef=db.ref(`kahootRooms/${roomCode}/players`);
+  const responsesRef=db.ref(`kahootRooms/${roomCode}/responses`);
+  const onRoom=snapshot=>{
+    roomData=snapshot.val();
+    if(!roomData){
+      activeRoom='';
+      renderWaitingState('La sala ya no está disponible.','El anfitrión ha cerrado o reemplazado esta sala.');
+      setRoomVisuals('');
+      return;
+    }
+    renderStage();
+  };
+  const onPlayers=snapshot=>{
+    playersData=snapshot.val()||{};
+    renderPlayers();
+    renderLeaderboard();
+    renderStage();
+  };
+  const onResponses=snapshot=>{
+    responsesData=snapshot.val()||{};
+    renderStage();
+  };
+  roomRef.on('value',onRoom);
+  playersRef.on('value',onPlayers);
+  responsesRef.on('value',onResponses);
+  roomUnsubs.push(()=>roomRef.off('value',onRoom));
+  roomUnsubs.push(()=>playersRef.off('value',onPlayers));
+  roomUnsubs.push(()=>responsesRef.off('value',onResponses));
+}
+
+function upsertPlayer(){
+  if(!firebaseReady || !activeRoom || !playerName) return;
+  const playerRef=db.ref(`kahootRooms/${activeRoom}/players/${playerId}`);
+  playerRef.once('value').then(snapshot=>{
+    const current=snapshot.val()||{};
+    return playerRef.set({
+      id:playerId,
+      name:playerName,
+      joinedAt:current.joinedAt || Date.now(),
+      correctCount:current.correctCount || 0,
+      lastSeenAt:Date.now()
+    });
+  });
+}
+
+function createCode(){
+  const chars='ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+  let code='';
+  for(let i=0;i<6;i++) code+=chars[Math.floor(Math.random()*chars.length)];
+  return code;
+}
+
+async function createRoom(){
+  if(!firebaseReady){
+    renderHostStatus('El multijugador aún no está configurado con Firebase.');
+    return;
+  }
+  const cleanHost=normalizeName(hostNameInput.value);
+  if(!cleanHost){
+    renderHostStatus('Escribe primero el nombre del anfitrión.');
+    return;
+  }
+  hostName=cleanHost;
+  localStorage.setItem(HOST_NAME_KEY,hostName);
+  role='host';
+  const roomCode=createCode();
+  const questionOrder=shuffleOrder(ROOM_QUESTION_LIMIT);
+  await db.ref(`kahootRooms/${roomCode}`).set({
+    code:roomCode,
+    hostName,
+    status:'lobby',
+    createdAt:Date.now(),
+    currentQuestionIndex:0,
+    currentRound:1,
+    totalQuestions:questionOrder.length,
+    questionOrder
+  });
+  activeRoom=roomCode;
+  roomData={code:roomCode,status:'lobby',currentQuestionIndex:0,currentRound:1,totalQuestions:questionOrder.length,questionOrder,hostName};
+  playersData={};
+  responsesData={};
+  history.replaceState({},'',getJoinUrl(roomCode));
+  setRoomVisuals(roomCode);
+  renderHostStatus(`Sala ${roomCode} creada. Ya puedes compartir el QR o iniciar la partida.`);
+  subscribeRoom(roomCode);
+  renderStage();
+}
+
+function startRoom(){
+  if(!firebaseReady || role!=='host' || !activeRoom) return;
+  const updates={[`kahootRooms/${activeRoom}/status`]:'active',[`kahootRooms/${activeRoom}/currentQuestionIndex`]:0,[`kahootRooms/${activeRoom}/currentRound`]:1,[`kahootRooms/${activeRoom}/responses`]:null};
+  getSortedPlayers().forEach(player=>{
+    updates[`kahootRooms/${activeRoom}/players/${player.id}/correctCount`]=0;
+  });
+  db.ref().update(updates);
+}
+
+function advanceQuestion(){
+  if(!firebaseReady || role!=='host' || !activeRoom || !roomData) return;
+  if(roomData.status==='lobby'){
+    startRoom();
+    return;
+  }
+  const nextIndex=(roomData.currentQuestionIndex||0)+1;
+  if(nextIndex>=((roomData.questionOrder||[]).length)){
+    finishRoom();
+    return;
+  }
+  db.ref(`kahootRooms/${activeRoom}`).update({
+    currentQuestionIndex:nextIndex,
+    currentRound:(roomData.currentRound||1)+1,
+    status:'active'
+  });
+}
+
+function finishRoom(){
+  if(!firebaseReady || role!=='host' || !activeRoom) return;
+  db.ref(`kahootRooms/${activeRoom}`).update({status:'finished',finishedAt:Date.now()});
+}
+
+function joinRoom(name,roomCode){
+  if(!firebaseReady){
+    renderPlayerStatus('El modo multijugador todavía no está configurado en esta publicación.');
+    return;
+  }
+  const cleanName=normalizeName(name);
+  const cleanCode=normalizeRoomCode(roomCode);
+  if(!cleanName || !cleanCode){
+    renderPlayerStatus('Necesitas escribir tu nombre y un código de sala válido.');
+    return;
+  }
+  db.ref(`kahootRooms/${cleanCode}`).once('value').then(snapshot=>{
+    if(!snapshot.exists()){
+      renderPlayerStatus(`La sala <strong>${cleanCode}</strong> no existe ahora mismo.`);
+      return;
+    }
+    playerName=cleanName;
+    localStorage.setItem(PLAYER_NAME_KEY,playerName);
+    role='player';
+    activeRoom=cleanCode;
+    playerJoinName.value=playerName;
+    playerRoomCode.value=cleanCode;
+    history.replaceState({},'',getJoinUrl(cleanCode));
+    setRoomVisuals(cleanCode);
+    subscribeRoom(cleanCode);
+    upsertPlayer();
+    renderPlayerStatus(`Conectado a la sala <strong>${cleanCode}</strong> como <strong>${escapeHtml(cleanName)}</strong>.`);
+  });
+}
+
+function submitAnswer(choiceIndex){
+  if(!firebaseReady || role!=='player' || !activeRoom || !roomData) return;
+  const question=getCurrentQuestion();
+  if(!question) return;
+  const round=String(roomData.currentRound||1);
+  const responseRef=db.ref(`kahootRooms/${activeRoom}/responses/${round}/${playerId}`);
+  responseRef.transaction(current=>{
+    if(current) return;
+    return {
+      playerId,
+      name:playerName,
+      choiceIndex,
+      isCorrect:choiceIndex===question.ok,
+      questionIndex:roomData.questionOrder[roomData.currentQuestionIndex||0],
+      answeredAt:Date.now()
+    };
+  },(error,committed,snapshot)=>{
+    if(error || !committed) return;
+    const answer=snapshot.val();
+    if(answer?.isCorrect){
+      db.ref(`kahootRooms/${activeRoom}/players/${playerId}/correctCount`).transaction(value=>(value||0)+1);
+    }
+    db.ref(`kahootRooms/${activeRoom}/players/${playerId}`).update({name:playerName,lastSeenAt:Date.now()});
+  });
+}
+
+function getSoloStore(){
+  try{
+    return JSON.parse(localStorage.getItem(SOLO_STORAGE_KEY)||'[]');
+  }catch(error){
+    return [];
+  }
+}
+
+function saveSoloResult(score,total){
+  const store=getSoloStore();
+  store.unshift({score,total,date:new Date().toISOString()});
+  localStorage.setItem(SOLO_STORAGE_KEY,JSON.stringify(store.slice(0,8)));
+}
+
+function renderSoloSummary(){
+  const store=getSoloStore();
+  if(!store.length){
+    soloSummary.textContent='El modo individual guarda el mejor resultado en este navegador.';
+    return;
+  }
+  const best=store.reduce((top,item)=>item.score>top.score?item:top,store[0]);
+  soloSummary.textContent=`Mejor resultado guardado: ${best.score}/${best.total}.`;
+}
+
+function startSoloGame(){
+  soloState={order:shuffleOrder(12),index:0,score:0,locked:false};
+  renderSoloStage();
+}
+
+function renderSoloStage(){
+  if(!soloState){
+    renderWaitingState('Todo el juego en una sola superficie.','La pregunta, el progreso y las respuestas aparecerán aquí. El panel lateral queda reservado para acceso y configuración, así evitamos que las secciones se monten unas sobre otras.');
+    return;
+  }
+  const item=questions[soloState.order[soloState.index]];
+  const progress=Math.round((soloState.index/soloState.order.length)*100);
+  stageModeChip.textContent='Modo individual';
+  stageBox.className='';
+  stageBox.innerHTML=`<div class="stage-meta"><span class="stage-chip">Partida local</span><span class="stage-chip">Pregunta ${soloState.index+1} / ${soloState.order.length}</span><span class="stage-chip">${soloState.score} aciertos</span></div><div class="progress"><span style="width:${progress}%"></span></div><p class="question">${item.q}</p><div class="answer-grid">${item.a.map((answer,index)=>`<button class="answer-btn" data-solo-choice="${index}" type="button"><span class="answer-key">${letters[index]}</span><div>${answer}</div></button>`).join('')}</div><div class="feedback pending" id="soloFeedback">Responde para continuar.</div><div class="toolbar"><button class="secondary-btn" id="cancelSoloBtn" type="button">Salir del modo individual</button></div>`;
+  stageBox.querySelectorAll('[data-solo-choice]').forEach(button=>button.addEventListener('click',()=>answerSolo(Number(button.dataset.soloChoice),item)));
+  document.getElementById('cancelSoloBtn').addEventListener('click',()=>{
+    soloState=null;
+    renderStage();
+  });
+}
+
+function answerSolo(choiceIndex,item){
+  if(!soloState || soloState.locked) return;
+  soloState.locked=true;
+  const feedback=document.getElementById('soloFeedback');
+  const buttons=[...stageBox.querySelectorAll('[data-solo-choice]')];
+  buttons.forEach(btn=>btn.disabled=true);
+  const isCorrect=choiceIndex===item.ok;
+  if(isCorrect){
+    soloState.score++;
+    buttons[choiceIndex].classList.add('correct');
+    feedback.className='feedback ok';
+    feedback.textContent=`Correcto. ${item.exp}`;
+  }else{
+    buttons[choiceIndex].classList.add('wrong');
+    buttons[item.ok].classList.add('correct');
+    feedback.className='feedback ko';
+    feedback.textContent=`No es correcto. La respuesta adecuada es ${letters[item.ok]}) ${item.a[item.ok]}. ${item.exp}`;
+  }
+  const nextBtn=document.createElement('button');
+  nextBtn.className='primary-btn';
+  nextBtn.type='button';
+  nextBtn.textContent=soloState.index+1>=soloState.order.length?'Ver resultado':'Siguiente pregunta';
+  nextBtn.addEventListener('click',advanceSolo);
+  stageBox.querySelector('.toolbar').prepend(nextBtn);
+}
+
+function advanceSolo(){
+  if(!soloState) return;
+  soloState.index++;
+  soloState.locked=false;
+  if(soloState.index>=soloState.order.length){
+    saveSoloResult(soloState.score,soloState.order.length);
+    stageModeChip.textContent='Resultado individual';
+    stageBox.className='empty-state';
+    stageBox.innerHTML=`<div><h3>Partida terminada</h3><p>Has conseguido ${soloState.score}/${soloState.order.length} aciertos.</p><div class="toolbar"><button class="primary-btn" id="retrySoloBtn" type="button">Jugar otra vez</button><button class="secondary-btn" id="closeSoloBtn" type="button">Cerrar</button></div></div>`;
+    document.getElementById('retrySoloBtn').addEventListener('click',startSoloGame);
+    document.getElementById('closeSoloBtn').addEventListener('click',()=>{soloState=null;renderStage();});
+    renderSoloSummary();
+    return;
+  }
+  renderSoloStage();
+}
+
+copyDirectLinkBtn.addEventListener('click',async()=>{
+  const url=getJoinUrl(activeRoom);
+  await navigator.clipboard.writeText(url);
+  copyDirectLinkBtn.textContent='Enlace copiado';
+  setTimeout(()=>{copyDirectLinkBtn.textContent='Copiar enlace del juego';},1400);
+});
+
+hostForm.addEventListener('submit',event=>{
+  event.preventDefault();
+  hostName=normalizeName(hostNameInput.value);
+  localStorage.setItem(HOST_NAME_KEY,hostName);
+  role='host';
+  renderHostStatus(hostName?'Anfitrión preparado. Ahora ya puedes crear la sala.':'Escribe primero el nombre del anfitrión.');
+});
+
+createRoomBtn.addEventListener('click',createRoom);
+copyRoomLinkBtn.addEventListener('click',async()=>{
+  const url=activeRoom?getJoinUrl(activeRoom):getJoinUrl();
+  await navigator.clipboard.writeText(url);
+  copyRoomLinkBtn.textContent='Acceso copiado';
+  setTimeout(()=>{copyRoomLinkBtn.textContent='Copiar acceso';},1400);
+});
+
+playerJoinForm.addEventListener('submit',event=>{
+  event.preventDefault();
+  joinRoom(playerJoinName.value,playerRoomCode.value);
+});
+
+startSoloBtn.addEventListener('click',()=>{
+  soloState=null;
+  startSoloGame();
+});
+
+hostNameInput.value=hostName;
+playerJoinName.value=playerName;
+initFirebase();
+setFirebaseUi();
+setRoomVisuals('');
+renderSoloSummary();
+renderPlayers();
+renderLeaderboard();
+renderStage();
+
+const roomParam=normalizeRoomCode(new URL(window.location.href).searchParams.get('room'));
+if(roomParam){
+  activeRoom=roomParam;
+  playerRoomCode.value=roomParam;
+  setRoomVisuals(roomParam);
+  if(firebaseReady){
+    subscribeRoom(roomParam);
+    if(playerName){
+      joinRoom(playerName,roomParam);
+    }else{
+      renderPlayerStatus(`La sala <strong>${roomParam}</strong> está lista. Escribe tu nombre para entrar.`);
+    }
+  }
+}
+</script>
+</body>
+</html>
