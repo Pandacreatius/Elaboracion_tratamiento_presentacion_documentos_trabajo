@@ -31,7 +31,7 @@
     <article class="hero-card">
       <span class="eyebrow">Juego de repaso</span>
       <h1>Una pantalla propia para jugar, sin ruido y sin secciones montadas.</h1>
-      <p class="hero-copy">He dejado el repaso principal intacto y el juego en una página separada. Aquí todo gira alrededor de una sola experiencia: entrar con tu nombre, empezar el quiz y ver tu progreso y tus mejores resultados con una interfaz mucho más clara.</p>
+      <p class="hero-copy">He dejado el repaso principal intacto y el juego en una página separada. Aquí todo gira alrededor de una sola experiencia: entrar con tu nombre, empezar un quiz de 30 preguntas y seguir tu progreso con una interfaz mucho más clara.</p>
       <div class="hero-actions">
         <a class="primary-btn" href="#playerPanel">Empezar ahora</a>
         <button class="secondary-btn" id="copyGameLinkBtn" type="button">Copiar enlace del juego</button>
@@ -40,14 +40,14 @@
     <aside class="hero-side">
       <div>
         <h2>Qué mejora aquí</h2>
-        <p>La navegación, el acceso, la pregunta y el marcador quedan bien separados. El juego ya no compite visualmente con el contenido académico de la home.</p>
+        <p>La navegación, la pregunta, el progreso y el marcador quedan bien separados. El juego ya no compite visualmente con el contenido académico de la home.</p>
       </div>
       <div class="chips">
-        <span class="chip">Modo individual</span>
+        <span class="chip">30 preguntas</span>
         <span class="chip">Progreso claro</span>
-        <span class="chip">Historial local</span>
+        <span class="chip">Logros y ranking</span>
       </div>
-      <div class="aside-note">El modo multijugador y la integración con Firebase se han retirado por completo para dejar una experiencia más estable y ordenada.</div>
+      <div class="aside-note">El juego queda como un quiz individual estable, ordenado y centrado en el aprendizaje: preguntas, progreso, resultados y motivación.</div>
     </aside>
   </section>
 
@@ -75,6 +75,13 @@
         <h3>Últimas partidas</h3>
         <div id="historyBox">
           <p>Todavía no hay resultados guardados.</p>
+        </div>
+      </section>
+
+      <section class="leaderboard-card">
+        <h3>Logros</h3>
+        <div id="achievementsBox">
+          <p>Juega tu primera partida para desbloquear logros.</p>
         </div>
       </section>
     </div>
@@ -111,7 +118,7 @@ const questions=window.UF0327_QUESTIONS||[];
 const letters=['A','B','C'];
 const PLAYER_NAME_KEY='uf0327_quiz_player_name_v3';
 const HISTORY_KEY='uf0327_quiz_history_v3';
-const TOTAL_QUESTIONS=12;
+const TOTAL_QUESTIONS=30;
 
 const playerForm=document.getElementById('playerForm');
 const playerNameInput=document.getElementById('playerNameInput');
@@ -120,6 +127,7 @@ const startGameBtn=document.getElementById('startGameBtn');
 const resetHistoryBtn=document.getElementById('resetHistoryBtn');
 const copyGameLinkBtn=document.getElementById('copyGameLinkBtn');
 const historyBox=document.getElementById('historyBox');
+const achievementsBox=document.getElementById('achievementsBox');
 const leaderboardBox=document.getElementById('leaderboardBox');
 const stageBox=document.getElementById('stageBox');
 const modeChip=document.getElementById('modeChip');
@@ -196,10 +204,38 @@ function renderLeaderboard(){
   leaderboardBox.innerHTML=`<table class="board-table"><thead><tr><th>Jugador</th><th>Mejor</th><th>Partidas</th></tr></thead><tbody>${grouped.map((row,index)=>`<tr><td>${index+1}. ${escapeHtml(row.name)}</td><td>${row.best.score}/${row.best.total}</td><td>${row.attempts}</td></tr>`).join('')}</tbody></table>`;
 }
 
+function getMotivationalMessage(score,total){
+  const pct=total?Math.round((score/total)*100):0;
+  if(pct>=90) return 'Vas lanzado. Dominas el contenido con mucha seguridad.';
+  if(pct>=75) return 'Muy buena media. Sigue así, estás consolidando bien los conceptos.';
+  if(pct>=55) return 'Buen ritmo. Ya tienes una base sólida, afina en las siguientes preguntas.';
+  if(pct>=35) return 'Estás avanzando. Cada explicación te está acercando a una mejor media.';
+  return 'Acabas de empezar o estás en fase de calentamiento. Sigue, que el quiz está pensado para aprender jugando.';
+}
+
+function renderAchievements(){
+  const history=getHistory();
+  if(!history.length){
+    achievementsBox.innerHTML='<p>Juega tu primera partida para desbloquear logros.</p>';
+    return;
+  }
+  const mine=playerName?history.filter(item=>item.name===playerName):history;
+  const best=mine.reduce((top,item)=>item.score>top.score?item:top,mine[0]);
+  const attempts=mine.length;
+  const avg=Math.round(mine.reduce((sum,item)=>sum+Math.round((item.score/item.total)*100),0)/mine.length);
+  const unlocked=[];
+  if(attempts>=1) unlocked.push('Primer intento completado');
+  if(attempts>=5) unlocked.push('Constancia: 5 partidas jugadas');
+  if(best && best.score>=20) unlocked.push('Base sólida: 20 aciertos o más');
+  if(best && best.score>=25) unlocked.push('Nivel alto: 25 aciertos o más');
+  if(best && best.score>=28) unlocked.push('Excelencia: 28 aciertos o más');
+  achievementsBox.innerHTML=`<div class="history-list"><div class="history-item"><div><strong>Mejor marca</strong><span class="micro">${best.score}/${best.total}</span></div><div><strong>${Math.round((best.score/best.total)*100)}%</strong></div></div><div class="history-item"><div><strong>Media global</strong><span class="micro">${attempts} partidas</span></div><div><strong>${avg}%</strong></div></div>${unlocked.map(item=>`<div class="history-item"><div><strong>${item}</strong><span class="micro">Desbloqueado</span></div><div><strong>OK</strong></div></div>`).join('')}</div>`;
+}
+
 function renderIdleState(){
   modeChip.textContent='En reposo';
   stageBox.className='empty-state';
-  stageBox.innerHTML='<div><h3>Todo el juego vive aquí.</h3><p>La pregunta, las respuestas, el progreso y el resultado final ocupan una única superficie central para que la experiencia sea mucho más clara y cómoda.</p></div>';
+  stageBox.innerHTML='<div><h3>Todo el juego vive aquí.</h3><p>La pregunta, las respuestas, el progreso, los mensajes motivadores y el resultado final ocupan una única superficie central para que la experiencia sea mucho más clara y cómoda.</p></div>';
 }
 
 function startGame(){
@@ -215,9 +251,11 @@ function renderQuestion(){
   if(!gameState) return;
   const item=questions[gameState.order[gameState.index]];
   const progress=Math.round((gameState.index/gameState.order.length)*100);
+  const currentAnswered=gameState.index;
+  const currentMessage=getMotivationalMessage(gameState.score,currentAnswered||1);
   modeChip.textContent='En juego';
   stageBox.className='';
-  stageBox.innerHTML=`<div class="stage-meta"><span class="stage-chip">Jugador: ${escapeHtml(playerName)}</span><span class="stage-chip">Pregunta ${gameState.index+1}/${gameState.order.length}</span><span class="stage-chip">${gameState.score} aciertos</span></div><div class="progress"><span style="width:${progress}%"></span></div><p class="question">${item.q}</p><div class="answer-grid">${item.a.map((answer,index)=>`<button class="answer-btn" data-choice="${index}" type="button"><span class="answer-key">${letters[index]}</span><div>${answer}</div></button>`).join('')}</div><div class="feedback pending" id="gameFeedback">Responde para continuar.</div><div class="toolbar"><button class="secondary-btn" id="cancelGameBtn" type="button">Salir del juego</button></div>`;
+  stageBox.innerHTML=`<div class="stage-meta"><span class="stage-chip">Jugador: ${escapeHtml(playerName)}</span><span class="stage-chip">Pregunta ${gameState.index+1}/${gameState.order.length}</span><span class="stage-chip">${gameState.score} aciertos</span></div><div class="progress"><span style="width:${progress}%"></span></div><p class="question">${item.q}</p><div class="aside-note">${currentMessage}</div><div class="answer-grid">${item.a.map((answer,index)=>`<button class="answer-btn" data-choice="${index}" type="button"><span class="answer-key">${letters[index]}</span><div>${answer}</div></button>`).join('')}</div><div class="feedback pending" id="gameFeedback">Responde para continuar.</div><div class="toolbar"><button class="secondary-btn" id="cancelGameBtn" type="button">Salir del juego</button></div>`;
   stageBox.querySelectorAll('[data-choice]').forEach(button=>button.addEventListener('click',()=>answerQuestion(Number(button.dataset.choice),item)));
   document.getElementById('cancelGameBtn').addEventListener('click',()=>{
     gameState=null;
@@ -232,16 +270,19 @@ function answerQuestion(choiceIndex,item){
   const buttons=[...stageBox.querySelectorAll('[data-choice]')];
   buttons.forEach(btn=>btn.disabled=true);
   const isCorrect=choiceIndex===item.ok;
+  const projectedScore=gameState.score + (isCorrect?1:0);
+  const projectedAnswered=gameState.index+1;
+  const motivationalLine=getMotivationalMessage(projectedScore,projectedAnswered);
   if(isCorrect){
     gameState.score++;
     buttons[choiceIndex].classList.add('correct');
     feedback.className='feedback ok';
-    feedback.textContent=`Correcto. ${item.exp}`;
+    feedback.textContent=`Correcto. ${item.exp} ${motivationalLine}`;
   }else{
     buttons[choiceIndex].classList.add('wrong');
     buttons[item.ok].classList.add('correct');
     feedback.className='feedback ko';
-    feedback.textContent=`No es correcto. La respuesta adecuada es ${letters[item.ok]}) ${item.a[item.ok]}. ${item.exp}`;
+    feedback.textContent=`No es correcto. La respuesta adecuada es ${letters[item.ok]}) ${item.a[item.ok]}. ${item.exp} ${motivationalLine}`;
   }
   const nextBtn=document.createElement('button');
   nextBtn.className='primary-btn';
@@ -261,7 +302,7 @@ function advanceGame(){
     saveHistory(history.slice(0,20));
     modeChip.textContent='Resultado';
     stageBox.className='empty-state';
-    stageBox.innerHTML=`<div><h3>Partida terminada</h3><p>${escapeHtml(playerName)}, has conseguido ${gameState.score}/${gameState.order.length} aciertos.</p><div class="toolbar"><button class="primary-btn" id="retryBtn" type="button">Jugar otra vez</button><button class="secondary-btn" id="closeBtn" type="button">Cerrar</button></div></div>`;
+    stageBox.innerHTML=`<div><h3>Partida terminada</h3><p>${escapeHtml(playerName)}, has conseguido ${gameState.score}/${gameState.order.length} aciertos.</p><p>${getMotivationalMessage(gameState.score,gameState.order.length)}</p><div class="toolbar"><button class="primary-btn" id="retryBtn" type="button">Jugar otra vez</button><button class="secondary-btn" id="closeBtn" type="button">Cerrar</button></div></div>`;
     document.getElementById('retryBtn').addEventListener('click',startGame);
     document.getElementById('closeBtn').addEventListener('click',()=>{
       gameState=null;
@@ -270,6 +311,7 @@ function advanceGame(){
     renderPlayerStatus();
     renderHistory();
     renderLeaderboard();
+    renderAchievements();
     return;
   }
   renderQuestion();
@@ -293,6 +335,7 @@ resetHistoryBtn.addEventListener('click',()=>{
   localStorage.removeItem(HISTORY_KEY);
   renderHistory();
   renderLeaderboard();
+  renderAchievements();
   renderPlayerStatus();
 });
 
@@ -306,6 +349,7 @@ playerNameInput.value=playerName;
 renderPlayerStatus();
 renderHistory();
 renderLeaderboard();
+renderAchievements();
 renderIdleState();
 </script>
 </body>
