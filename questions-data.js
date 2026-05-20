@@ -498,5 +498,205 @@ window.UF0327_QUESTIONS=[
     ],
     "ok": 2,
     "exp": "Un buen documento no solo se ve bien: también es fiable, legal, comprensible y útil."
+  },
+  {
+    "q": "¿Qué ventaja tiene aplicar estilos a los títulos en un documento largo?",
+    "a": [
+      "Permite cambiar el formato de todos los títulos de forma coherente",
+      "Hace que el archivo se borre más rápido",
+      "Evita guardar el documento"
+    ],
+    "ok": 0,
+    "exp": "Los estilos ayudan a mantener uniformidad y facilitan cambios globales en el diseño del documento."
+  },
+  {
+    "q": "¿Para qué sirve un salto de página?",
+    "a": [
+      "Para insertar una contraseña",
+      "Para empezar contenido nuevo en la página siguiente sin usar muchos Enter",
+      "Para traducir el texto automáticamente"
+    ],
+    "ok": 1,
+    "exp": "El salto de página ordena mejor el documento y evita problemas de maquetación al editar."
+  },
+  {
+    "q": "¿Qué permite un encabezado en un procesador de textos?",
+    "a": [
+      "Añadir contenido repetido en la parte superior de las páginas",
+      "Bloquear el teclado",
+      "Cambiar el nombre del autor en Internet"
+    ],
+    "ok": 0,
+    "exp": "Los encabezados suelen incluir título, tema, curso o nombre de la empresa para identificar el documento."
+  },
+  {
+    "q": "¿Qué suele colocarse en un pie de página?",
+    "a": [
+      "Solo dibujos decorativos",
+      "Información repetida como numeración o datos del documento",
+      "La barra de herramientas"
+    ],
+    "ok": 1,
+    "exp": "El pie de página es útil para poner números de página, fechas o referencias de manera constante."
+  },
+  {
+    "q": "¿Qué opción es más adecuada para destacar una idea clave sin recargar el texto?",
+    "a": [
+      "Aplicar negrita con criterio",
+      "Poner todo el párrafo en mayúsculas",
+      "Usar cinco colores distintos en la misma frase"
+    ],
+    "ok": 0,
+    "exp": "La negrita ayuda a enfatizar información relevante, pero conviene usarla con moderación."
+  },
+  {
+    "q": "¿Qué problema puede causar abusar de distintos tipos y tamaños de letra?",
+    "a": [
+      "Mejora siempre la legibilidad",
+      "Vuelve el documento menos claro y menos profesional",
+      "Reduce automáticamente las faltas"
+    ],
+    "ok": 1,
+    "exp": "Una tipografía poco consistente dificulta la lectura y transmite desorden."
+  },
+  {
+    "q": "¿Qué herramienta es útil para localizar una palabra repetida varias veces en un documento?",
+    "a": [
+      "Buscar",
+      "Insertar tabla",
+      "Vista previa de impresión"
+    ],
+    "ok": 0,
+    "exp": "La función Buscar ahorra tiempo al localizar términos, errores o apartados concretos."
+  },
+  {
+    "q": "¿Para qué sirve la herramienta Reemplazar?",
+    "a": [
+      "Para cambiar automáticamente una palabra o formato por otro",
+      "Para cerrar todos los programas",
+      "Para guardar una copia en PDF sin revisar"
+    ],
+    "ok": 0,
+    "exp": "Reemplazar permite corregir términos repetidos o actualizar nombres de forma masiva."
+  },
+  {
+    "q": "¿Qué formato es habitual al compartir un documento final sin querer que se edite fácilmente?",
+    "a": [
+      "TXT",
+      "PDF",
+      "BMP"
+    ],
+    "ok": 1,
+    "exp": "El PDF conserva bastante bien el diseño y suele usarse para distribución final."
+  },
+  {
+    "q": "¿Qué conviene hacer antes de imprimir un documento importante?",
+    "a": [
+      "Cambiar el idioma del teclado",
+      "Revisar la vista previa de impresión",
+      "Cerrar el archivo sin guardar"
+    ],
+    "ok": 1,
+    "exp": "La vista previa permite detectar saltos raros, márgenes incorrectos o elementos mal alineados."
+  },
+  {
+    "q": "¿Qué indica mejor un nombre de archivo profesional?",
+    "a": [
+      "Información clara sobre contenido y versión",
+      "Solo letras aleatorias",
+      "El uso de muchos símbolos innecesarios"
+    ],
+    "ok": 0,
+    "exp": "Nombres como informe_clientes_v2 facilitan localizar y entender el archivo."
+  },
+  {
+    "q": "¿Qué ventaja tiene guardar versiones de un documento?",
+    "a": [
+      "Permite recuperar estados anteriores si algo falla",
+      "Hace que el documento no pueda abrirse",
+      "Borra automáticamente las imágenes"
+    ],
+    "ok": 0,
+    "exp": "Trabajar con versiones reduce el riesgo de perder cambios valiosos o mezclar revisiones."
+  },
+  {
+    "q": "¿Qué representa mejor una tabla en un documento?",
+    "a": [
+      "Datos organizados en filas y columnas",
+      "Un fondo decorativo",
+      "Una firma digital"
+    ],
+    "ok": 0,
+    "exp": "Las tablas ayudan a comparar datos, ordenar información y mejorar la lectura de listados."
+  },
+  {
+    "q": "¿Qué cuidado conviene tener al insertar una tabla extensa?",
+    "a": [
+      "No revisar nunca el ancho de columnas",
+      "Asegurar legibilidad, títulos claros y buena distribución del espacio",
+      "Usar colores intensos en todas las celdas"
+    ],
+    "ok": 1,
+    "exp": "Una tabla útil debe poder leerse con rapidez y no saturar visualmente la página."
+  },
+  {
+    "q": "¿Qué se recomienda al insertar una imagen en un documento académico o profesional?",
+    "a": [
+      "Comprobar su relevancia, tamaño y calidad",
+      "Estirarla hasta deformarla",
+      "Colocarla sin relación con el contenido"
+    ],
+    "ok": 0,
+    "exp": "La imagen debe aportar valor, verse correctamente y mantener proporciones adecuadas."
+  },
+  {
+    "q": "¿Qué ayuda a que un documento sea más accesible?",
+    "a": [
+      "Buen contraste, estructura clara y lenguaje comprensible",
+      "Párrafos sin separación y letra diminuta",
+      "Muchos efectos visuales innecesarios"
+    ],
+    "ok": 0,
+    "exp": "La accesibilidad mejora la comprensión para más personas y hace el documento más usable."
+  },
+  {
+    "q": "¿Qué función tiene un índice automático?",
+    "a": [
+      "Crear una relación de apartados y páginas a partir de estilos",
+      "Traducir el documento a otro idioma",
+      "Borrar las imágenes duplicadas"
+    ],
+    "ok": 0,
+    "exp": "Cuando los títulos usan estilos, el índice puede generarse y actualizarse automáticamente."
+  },
+  {
+    "q": "¿Qué debe revisarse si la numeración de páginas no aparece bien?",
+    "a": [
+      "Los encabezados, pies y la configuración de secciones",
+      "El color del escritorio",
+      "La velocidad de Internet"
+    ],
+    "ok": 0,
+    "exp": "Los errores de numeración suelen deberse a pies de página, secciones o saltos mal configurados."
+  },
+  {
+    "q": "¿Qué práctica mejora la calidad final de un documento antes de entregarlo?",
+    "a": [
+      "Leerlo una sola vez muy rápido",
+      "Hacer una revisión final de contenido, forma y formato",
+      "Cambiar aleatoriamente la tipografía"
+    ],
+    "ok": 1,
+    "exp": "La revisión final detecta errores de redacción, coherencia y presentación antes de compartirlo."
+  },
+  {
+    "q": "¿Qué aporta una estructura con introducción, desarrollo y cierre?",
+    "a": [
+      "Un documento más claro, lógico y fácil de seguir",
+      "Más dificultad para entender el texto",
+      "La desaparición automática de errores"
+    ],
+    "ok": 0,
+    "exp": "Una estructura reconocible ordena las ideas y facilita que el lector comprenda el contenido."
   }
 ];

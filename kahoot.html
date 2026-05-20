@@ -9,9 +9,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
 <style>
 :root{--ink:#07111f;--slate:#425466;--line:#d7dfeb;--panel:rgba(255,255,255,.86);--blue:#2563eb;--blue-deep:#173d90;--green:#15803d;--red:#dc2626;--amber:#d97706}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:"DM Sans",system-ui,sans-serif;color:var(--ink);background:radial-gradient(circle at top left,#cfe6ff 0,transparent 26%),radial-gradient(circle at top right,#d8fff2 0,transparent 18%),linear-gradient(180deg,#f5f9ff 0%,#eef4fb 45%,#f8fbff 100%)}a{color:inherit}.shell{max-width:1260px;margin:0 auto;padding:24px 20px 56px}.topbar{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:22px}.brand{display:flex;align-items:center;gap:12px;font-family:"Space Grotesk",sans-serif;font-weight:700}.brand-mark{width:46px;height:46px;border-radius:15px;display:grid;place-items:center;background:linear-gradient(135deg,#0f172a,#2563eb);color:#fff;box-shadow:0 18px 30px rgba(37,99,235,.22)}.back-link{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-weight:700;color:var(--slate);padding:10px 14px;border-radius:999px;border:1px solid rgba(66,84,102,.18);background:rgba(255,255,255,.78);backdrop-filter:blur(12px)}.hero{display:grid;grid-template-columns:1.15fr .85fr;gap:18px;margin-bottom:18px}.hero-card,.panel,.stage-card,.leaderboard-card{background:var(--panel);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.9);border-radius:28px;box-shadow:0 26px 42px rgba(15,23,42,.08)}.hero-card{padding:30px}.eyebrow{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;background:#e0ecff;color:var(--blue-deep);font-weight:700;font-size:.92rem}.hero-card h1{font-family:"Space Grotesk",sans-serif;font-size:clamp(2.6rem,5vw,4.6rem);line-height:.95;letter-spacing:-.05em;margin:12px 0 18px}.hero-copy{max-width:700px;color:var(--slate);font-size:1.08rem;line-height:1.65}.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}.primary-btn,.secondary-btn,.ghost-btn{appearance:none;border:0;border-radius:16px;padding:14px 18px;font:inherit;font-weight:700;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:8px}.primary-btn{background:linear-gradient(135deg,var(--blue),#3b82f6);color:#fff;box-shadow:0 18px 28px rgba(37,99,235,.22)}.secondary-btn{background:#fff;color:var(--ink);border:1px solid var(--line)}.ghost-btn{background:#eef5ff;color:var(--blue-deep)}.hero-side{padding:24px;display:grid;gap:16px}.hero-side h2,.panel h3,.stage-card h3,.leaderboard-card h3{font-family:"Space Grotesk",sans-serif;margin:0 0 8px}.chips{display:flex;flex-wrap:wrap;gap:10px}.chip{padding:9px 12px;border-radius:999px;background:#eef4fb;color:var(--blue-deep);font-size:.92rem;font-weight:700;border:1px solid #d9e7fb}.aside-note{padding:14px 16px;border-radius:18px;background:#fff7ed;border:1px solid #fed7aa;color:#9a3412}.layout{display:grid;grid-template-columns:360px 1fr;gap:18px;align-items:start}.rail{display:grid;gap:18px}.panel{padding:22px}.panel p,.hero-side p,.leaderboard-card p,.stage-card p{color:var(--slate);line-height:1.55}.form-grid{display:grid;gap:12px}.field-label{font-size:.92rem;font-weight:700;color:var(--ink)}.text-input{width:100%;padding:14px 15px;border-radius:16px;border:1px solid var(--line);background:#fff;font:inherit;color:var(--ink)}.text-input:focus{outline:3px solid rgba(37,99,235,.16);border-color:#8bb8ff}.score-card{padding:16px 18px;border-radius:20px;background:linear-gradient(135deg,#eef5ff,#f5fbff);border:1px solid #d7e8ff}.score-card strong{display:block;font-size:1.1rem;color:var(--ink)}.micro{font-size:.92rem;color:var(--slate)}.stage-card{padding:24px;min-height:620px}.stage-meta{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:12px}.stage-chip{padding:8px 12px;border-radius:999px;background:#f2f6fb;border:1px solid #dbe4ee;color:var(--blue-deep);font-size:.92rem;font-weight:700}.empty-state{display:grid;place-items:center;text-align:center;min-height:420px;padding:28px;border:1px dashed #ced8e5;border-radius:24px;background:linear-gradient(180deg,#f9fbff 0,#f2f7fd 100%)}.empty-state h3{margin:0 0 10px}.question{font-family:"Space Grotesk",sans-serif;font-size:clamp(1.5rem,2.2vw,2.05rem);line-height:1.12;letter-spacing:-.03em;margin:10px 0 18px}.progress{height:12px;background:#e5ebf2;border-radius:999px;overflow:hidden}.progress span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--blue),#22c55e)}.answer-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:18px}.answer-btn{display:flex;align-items:flex-start;gap:12px;width:100%;padding:16px 18px;border-radius:22px;border:1px solid var(--line);background:#fff;font:inherit;text-align:left;color:var(--ink);cursor:pointer}.answer-btn:hover{border-color:#8bb8ff;box-shadow:0 10px 18px rgba(37,99,235,.08);transform:translateY(-1px)}.answer-btn:disabled{cursor:not-allowed;transform:none}.answer-btn.correct{background:#ecfdf5;border-color:#a7f3d0}.answer-btn.wrong{background:#fef2f2;border-color:#fecaca}.answer-key{flex:0 0 42px;width:42px;height:42px;border-radius:15px;display:grid;place-items:center;background:linear-gradient(135deg,#0f172a,#2563eb);color:#fff;font-family:"Space Grotesk",sans-serif;font-weight:700}.answer-btn.correct .answer-key{background:linear-gradient(135deg,#15803d,#34d399)}.answer-btn.wrong .answer-key{background:linear-gradient(135deg,#b91c1c,#ef4444)}.feedback{margin-top:18px;padding:14px 16px;border-radius:18px;font-weight:700}.feedback.ok{background:#ecfdf5;border:1px solid #a7f3d0;color:#166534}.feedback.ko{background:#fef2f2;border:1px solid #fecaca;color:#991b1b}.feedback.pending{background:#fff7ed;border:1px solid #fed7aa;color:#9a3412}.toolbar{display:flex;flex-wrap:wrap;gap:12px;margin-top:18px}.leaderboard-card{padding:22px;margin-top:18px}.board-table{width:100%;border-collapse:collapse}.board-table th,.board-table td{padding:12px;border-bottom:1px solid #e6edf5;text-align:left}.board-table th{font-size:.88rem;text-transform:uppercase;letter-spacing:.05em;color:var(--slate)}.board-table tr:last-child td{border-bottom:0}.history-list{display:grid;gap:10px}.history-item{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:14px 16px;border-radius:18px;background:#f7faff;border:1px solid #e1eaf5}.history-item strong{display:block}.footer-note{text-align:center;margin-top:24px;color:var(--slate);font-size:.94rem}
-@media(max-width:1080px){.hero,.layout,.answer-grid{grid-template-columns:1fr}.stage-card{min-height:auto}}
-@media(max-width:640px){.shell{padding:16px 14px 44px}.topbar{display:grid}.hero-card,.hero-side,.panel,.stage-card,.leaderboard-card{border-radius:24px}.hero-card{padding:24px}.hero-actions,.toolbar{display:grid}.primary-btn,.secondary-btn,.ghost-btn{width:100%}}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:"DM Sans",system-ui,sans-serif;color:var(--ink);background:radial-gradient(circle at top left,#cfe6ff 0,transparent 26%),radial-gradient(circle at top right,#d8fff2 0,transparent 18%),linear-gradient(180deg,#f5f9ff 0%,#eef4fb 45%,#f8fbff 100%)}a{color:inherit}.shell{max-width:1260px;margin:0 auto;padding:24px 20px 56px}.topbar{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:22px}.brand{display:flex;align-items:center;gap:12px;font-family:"Space Grotesk",sans-serif;font-weight:700}.brand-mark{width:46px;height:46px;border-radius:15px;display:grid;place-items:center;background:linear-gradient(135deg,#0f172a,#2563eb);color:#fff;box-shadow:0 18px 30px rgba(37,99,235,.22)}.back-link{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-weight:700;color:var(--slate);padding:10px 14px;border-radius:999px;border:1px solid rgba(66,84,102,.18);background:rgba(255,255,255,.78);backdrop-filter:blur(12px)}.hero{margin-bottom:18px}.hero-card,.panel,.stage-card,.leaderboard-card{background:var(--panel);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.9);border-radius:28px;box-shadow:0 26px 42px rgba(15,23,42,.08)}.hero-card{padding:30px}.eyebrow{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;background:#e0ecff;color:var(--blue-deep);font-weight:700;font-size:.92rem}.hero-card h1{font-family:"Space Grotesk",sans-serif;font-size:clamp(2.6rem,5vw,4.6rem);line-height:.95;letter-spacing:-.05em;margin:12px 0 18px}.hero-copy{max-width:700px;color:var(--slate);font-size:1.08rem;line-height:1.65}.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}.primary-btn,.secondary-btn,.ghost-btn{appearance:none;border:0;border-radius:16px;padding:14px 18px;font:inherit;font-weight:700;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:8px}.primary-btn{background:linear-gradient(135deg,var(--blue),#3b82f6);color:#fff;box-shadow:0 18px 28px rgba(37,99,235,.22)}.secondary-btn{background:#fff;color:var(--ink);border:1px solid var(--line)}.ghost-btn{background:#eef5ff;color:var(--blue-deep)}.panel h3,.stage-card h3,.leaderboard-card h3{font-family:"Space Grotesk",sans-serif;margin:0 0 8px}.layout{display:grid;grid-template-columns:360px 1fr;gap:18px;align-items:start}.rail{display:grid;gap:18px}.panel{padding:22px}.panel p,.leaderboard-card p,.stage-card p{color:var(--slate);line-height:1.55}.form-grid{display:grid;gap:12px}.field-label{font-size:.92rem;font-weight:700;color:var(--ink)}.text-input{width:100%;padding:14px 15px;border-radius:16px;border:1px solid var(--line);background:#fff;font:inherit;color:var(--ink)}.text-input:focus{outline:3px solid rgba(37,99,235,.16);border-color:#8bb8ff}.score-card{padding:16px 18px;border-radius:20px;background:linear-gradient(135deg,#eef5ff,#f5fbff);border:1px solid #d7e8ff}.score-card strong{display:block;font-size:1.1rem;color:var(--ink)}.micro{font-size:.92rem;color:var(--slate)}.stage-card{padding:24px;min-height:620px}.stage-meta{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:12px}.stage-chip{padding:8px 12px;border-radius:999px;background:#f2f6fb;border:1px solid #dbe4ee;color:var(--blue-deep);font-size:.92rem;font-weight:700}.empty-state{display:grid;place-items:center;text-align:center;min-height:420px;padding:28px;border:1px dashed #ced8e5;border-radius:24px;background:linear-gradient(180deg,#f9fbff 0,#f2f7fd 100%)}.empty-state h3{margin:0 0 10px}.question{font-family:"Space Grotesk",sans-serif;font-size:clamp(1.5rem,2.2vw,2.05rem);line-height:1.12;letter-spacing:-.03em;margin:10px 0 18px}.progress{height:12px;background:#e5ebf2;border-radius:999px;overflow:hidden}.progress span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--blue),#22c55e)}.answer-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:18px}.answer-btn{display:flex;align-items:flex-start;gap:12px;width:100%;padding:16px 18px;border-radius:22px;border:1px solid var(--line);background:#fff;font:inherit;text-align:left;color:var(--ink);cursor:pointer}.answer-btn:hover{border-color:#8bb8ff;box-shadow:0 10px 18px rgba(37,99,235,.08);transform:translateY(-1px)}.answer-btn:disabled{cursor:not-allowed;transform:none}.answer-btn.correct{background:#ecfdf5;border-color:#a7f3d0}.answer-btn.wrong{background:#fef2f2;border-color:#fecaca}.answer-key{flex:0 0 42px;width:42px;height:42px;border-radius:15px;display:grid;place-items:center;background:linear-gradient(135deg,#0f172a,#2563eb);color:#fff;font-family:"Space Grotesk",sans-serif;font-weight:700}.answer-btn.correct .answer-key{background:linear-gradient(135deg,#15803d,#34d399)}.answer-btn.wrong .answer-key{background:linear-gradient(135deg,#b91c1c,#ef4444)}.feedback{margin-top:18px;padding:14px 16px;border-radius:18px;font-weight:700}.feedback.ok{background:#ecfdf5;border:1px solid #a7f3d0;color:#166534}.feedback.ko{background:#fef2f2;border:1px solid #fecaca;color:#991b1b}.feedback.pending{background:#fff7ed;border:1px solid #fed7aa;color:#9a3412}.toolbar{display:flex;flex-wrap:wrap;gap:12px;margin-top:18px}.leaderboard-card{padding:22px;margin-top:18px}.board-table{width:100%;border-collapse:collapse}.board-table th,.board-table td{padding:12px;border-bottom:1px solid #e6edf5;text-align:left}.board-table th{font-size:.88rem;text-transform:uppercase;letter-spacing:.05em;color:var(--slate)}.board-table tr:last-child td{border-bottom:0}.history-list{display:grid;gap:10px}.history-item{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:14px 16px;border-radius:18px;background:#f7faff;border:1px solid #e1eaf5}.history-item strong{display:block}.result-shell{display:grid;grid-template-columns:220px 1fr;gap:24px;align-items:center;width:100%}.result-chart{width:200px;height:200px;margin:0 auto;border-radius:50%;background:conic-gradient(#2563eb 0 var(--chart-success),#e5ebf2 var(--chart-success) 100%);display:grid;place-items:center;position:relative;box-shadow:inset 0 0 0 1px rgba(37,99,235,.08)}.result-chart::before{content:"";width:128px;height:128px;border-radius:50%;background:rgba(255,255,255,.96);box-shadow:0 8px 20px rgba(15,23,42,.08)}.result-chart-inner{position:absolute;display:grid;gap:4px;text-align:center}.result-chart-value{font-family:"Space Grotesk",sans-serif;font-size:2rem;line-height:1;font-weight:700}.result-chart-label{font-size:.82rem;letter-spacing:.06em;text-transform:uppercase;color:var(--slate)}.result-stats{display:grid;gap:12px;text-align:left}.result-stat{display:flex;justify-content:space-between;gap:16px;align-items:center;padding:14px 16px;border-radius:18px;background:#f7faff;border:1px solid #e1eaf5}.result-dot{width:12px;height:12px;border-radius:999px;display:inline-block;margin-right:10px}.result-dot.ok{background:#2563eb}.result-dot.ko{background:#cbd5e1}.result-copy{display:grid;gap:10px;text-align:left}.footer-note{text-align:center;margin-top:24px;color:var(--slate);font-size:.94rem}
+@media(max-width:1080px){.layout,.answer-grid,.result-shell{grid-template-columns:1fr}.stage-card{min-height:auto}.result-copy,.result-stats{text-align:center}.result-stat{text-align:left}}
+@media(max-width:640px){.shell{padding:16px 14px 44px}.topbar{display:grid}.hero-card,.panel,.stage-card,.leaderboard-card{border-radius:24px}.hero-card{padding:24px}.hero-actions,.toolbar{display:grid}.primary-btn,.secondary-btn,.ghost-btn{width:100%}.result-chart{width:170px;height:170px}.result-chart::before{width:108px;height:108px}}
 </style>
 </head>
 <body>
@@ -21,49 +21,37 @@
       <div class="brand-mark">P</div>
       <div>
         <div>UF0327 Play</div>
-        <div class="micro">Quiz interactivo individual</div>
+        <div class="micro">Reto de repaso individual</div>
       </div>
     </div>
-    <a class="back-link" href="index.html">Volver al repaso</a>
+    <a class="back-link" href="index.html">Volver al temario</a>
   </div>
 
   <section class="hero">
     <article class="hero-card">
-      <span class="eyebrow">Juego de repaso</span>
-      <h1>Una pantalla propia para jugar, sin ruido y sin secciones montadas.</h1>
-      <p class="hero-copy">He dejado el repaso principal intacto y el juego en una página separada. Aquí todo gira alrededor de una sola experiencia: entrar con tu nombre, empezar un quiz de 30 preguntas y seguir tu progreso con una interfaz mucho más clara.</p>
+      <span class="eyebrow">Reto UF0327</span>
+      <h1>50 preguntas para poner a prueba lo que sabes.</h1>
+      <p class="hero-copy">Lee, decide y avanza. Cada ronda mezcla conceptos clave sobre búsqueda de información, tratamiento de textos, formato, revisión y presentación profesional de documentos.</p>
       <div class="hero-actions">
         <a class="primary-btn" href="#playerPanel">Empezar ahora</a>
-        <button class="secondary-btn" id="copyGameLinkBtn" type="button">Copiar enlace del juego</button>
+        <button class="secondary-btn" id="copyGameLinkBtn" type="button">Copiar acceso</button>
       </div>
     </article>
-    <aside class="hero-side">
-      <div>
-        <h2>Qué mejora aquí</h2>
-        <p>La navegación, la pregunta, el progreso y el marcador quedan bien separados. El juego ya no compite visualmente con el contenido académico de la home.</p>
-      </div>
-      <div class="chips">
-        <span class="chip">30 preguntas</span>
-        <span class="chip">Progreso claro</span>
-        <span class="chip">Logros y ranking</span>
-      </div>
-      <div class="aside-note">El juego queda como un quiz individual estable, ordenado y centrado en el aprendizaje: preguntas, progreso, resultados y motivación.</div>
-    </aside>
   </section>
 
   <div class="layout">
     <div class="rail">
       <section class="panel" id="playerPanel">
         <h3>Jugador</h3>
-        <p>Introduce tu nombre para guardar tus resultados en este navegador y lanzar una partida nueva cuando quieras.</p>
+        <p>Escribe tu nombre para registrar tus intentos y comparar tu evolución en cada ronda.</p>
         <form class="form-grid" id="playerForm">
           <label class="field-label" for="playerNameInput">Nombre del jugador</label>
           <input class="text-input" id="playerNameInput" type="text" maxlength="40" placeholder="Escribe tu nombre" autocomplete="name" />
           <button class="primary-btn" type="submit">Guardar nombre</button>
         </form>
         <div class="score-card" id="playerStatusCard">
-          <strong>Ningún jugador identificado</strong>
-          <span class="micro">Guarda tu nombre para empezar una partida y registrar tu mejor resultado.</span>
+          <strong>Escribe tu nombre para empezar</strong>
+          <span class="micro">Tus aciertos y tu mejor marca se guardarán en este navegador.</span>
         </div>
         <div class="toolbar">
           <button class="secondary-btn" id="startGameBtn" type="button">Iniciar partida</button>
@@ -72,16 +60,16 @@
       </section>
 
       <section class="leaderboard-card">
-        <h3>Últimas partidas</h3>
+        <h3>Intentos recientes</h3>
         <div id="historyBox">
-          <p>Todavía no hay resultados guardados.</p>
+          <p>Tus últimas rondas aparecerán aquí.</p>
         </div>
       </section>
 
       <section class="leaderboard-card">
         <h3>Logros</h3>
         <div id="achievementsBox">
-          <p>Juega tu primera partida para desbloquear logros.</p>
+          <p>Supera retos de puntuación para ir desbloqueando insignias.</p>
         </div>
       </section>
     </div>
@@ -89,27 +77,27 @@
     <div>
       <section class="stage-card">
         <div class="stage-meta">
-          <span class="stage-chip">Tablero principal</span>
-          <span class="stage-chip" id="modeChip">En reposo</span>
+          <span class="stage-chip">Pregunta actual</span>
+          <span class="stage-chip" id="modeChip">Listo para empezar</span>
         </div>
         <div id="stageBox" class="empty-state">
           <div>
-            <h3>Todo el juego vive aquí.</h3>
-            <p>La pregunta, las respuestas, el progreso y el resultado final ocupan ahora una única superficie central para que la experiencia sea mucho más cómoda y limpia.</p>
+            <h3>Prepárate para la ronda.</h3>
+            <p>Cuando empieces, aquí verás cada pregunta, las opciones de respuesta, tu avance y el cierre final con tu porcentaje de acierto.</p>
           </div>
         </div>
       </section>
 
       <section class="leaderboard-card">
-        <h3>Mejores resultados</h3>
+        <h3>Mejores marcas</h3>
         <div id="leaderboardBox">
-          <p>Cuando juegues varias partidas, aquí aparecerá tu ranking local con los mejores intentos guardados.</p>
+          <p>Aquí se irán quedando las mejores puntuaciones guardadas en este dispositivo.</p>
         </div>
       </section>
     </div>
   </div>
 
-  <p class="footer-note">UF0327 Play · Quiz individual separado de la página de repaso</p>
+  <p class="footer-note">UF0327 Play · Repaso práctico sobre elaboración y tratamiento de documentos</p>
 </div>
 
 <script src="questions-data.js"></script>
@@ -118,7 +106,7 @@ const questions=window.UF0327_QUESTIONS||[];
 const letters=['A','B','C'];
 const PLAYER_NAME_KEY='uf0327_quiz_player_name_v3';
 const HISTORY_KEY='uf0327_quiz_history_v3';
-const TOTAL_QUESTIONS=30;
+const TOTAL_QUESTIONS=50;
 
 const playerForm=document.getElementById('playerForm');
 const playerNameInput=document.getElementById('playerNameInput');
@@ -170,7 +158,7 @@ function formatDate(value){
 
 function renderPlayerStatus(){
   if(!playerName){
-    playerStatusCard.innerHTML='<strong>Ningún jugador identificado</strong><span class="micro">Guarda tu nombre para empezar una partida y registrar tu mejor resultado.</span>';
+    playerStatusCard.innerHTML='<strong>Escribe tu nombre para empezar</strong><span class="micro">Tus aciertos y tu mejor marca se guardarán en este navegador.</span>';
     playerNameInput.value='';
     return;
   }
@@ -183,7 +171,7 @@ function renderPlayerStatus(){
 function renderHistory(){
   const history=getHistory();
   if(!history.length){
-    historyBox.innerHTML='<p>Todavía no hay resultados guardados.</p>';
+    historyBox.innerHTML='<p>Tus últimas rondas aparecerán aquí.</p>';
     return;
   }
   historyBox.innerHTML=`<div class="history-list">${history.slice(0,5).map(item=>`<div class="history-item"><div><strong>${escapeHtml(item.name)}</strong><span class="micro">${formatDate(item.date)}</span></div><div><strong>${item.score}/${item.total}</strong><span class="micro">${Math.round((item.score/item.total)*100)}%</span></div></div>`).join('')}</div>`;
@@ -192,7 +180,7 @@ function renderHistory(){
 function renderLeaderboard(){
   const history=getHistory();
   if(!history.length){
-    leaderboardBox.innerHTML='<p>Cuando juegues varias partidas, aquí aparecerá tu ranking local con los mejores intentos guardados.</p>';
+    leaderboardBox.innerHTML='<p>Aquí se irán quedando las mejores puntuaciones guardadas en este dispositivo.</p>';
     return;
   }
   const grouped=Object.values(history.reduce((acc,item)=>{
@@ -206,17 +194,23 @@ function renderLeaderboard(){
 
 function getMotivationalMessage(score,total){
   const pct=total?Math.round((score/total)*100):0;
-  if(pct>=90) return 'Vas lanzado. Dominas el contenido con mucha seguridad.';
-  if(pct>=75) return 'Muy buena media. Sigue así, estás consolidando bien los conceptos.';
-  if(pct>=55) return 'Buen ritmo. Ya tienes una base sólida, afina en las siguientes preguntas.';
-  if(pct>=35) return 'Estás avanzando. Cada explicación te está acercando a una mejor media.';
-  return 'Acabas de empezar o estás en fase de calentamiento. Sigue, que el quiz está pensado para aprender jugando.';
+  if(pct>=90) return 'Excelente dominio. Estás resolviendo el temario con mucha seguridad.';
+  if(pct>=75) return 'Muy buen trabajo. Mantienes un nivel alto y consistente.';
+  if(pct>=55) return 'Vas por buen camino. Ya sostienes una base bastante sólida.';
+  if(pct>=35) return 'Cada acierto suma. Sigue afinando conceptos y ganarás ritmo.';
+  return 'Continúa pregunta a pregunta: cada intento te ayuda a fijar mejor el contenido.';
+}
+
+function buildResultChart(score,total){
+  const successPct=total?Math.round((score/total)*100):0;
+  const failed=total-score;
+  return `<div class="result-shell"><div class="result-chart" style="--chart-success:${successPct}%"><div class="result-chart-inner"><strong class="result-chart-value">${successPct}%</strong><span class="result-chart-label">acierto</span></div></div><div class="result-copy"><p>${escapeHtml(playerName)}, has acertado ${score} de ${total} preguntas.</p><p>${getMotivationalMessage(score,total)}</p><div class="result-stats"><div class="result-stat"><span><span class="result-dot ok"></span>Respuestas correctas</span><strong>${score} · ${successPct}%</strong></div><div class="result-stat"><span><span class="result-dot ko"></span>Respuestas falladas</span><strong>${failed} · ${100-successPct}%</strong></div></div></div></div>`;
 }
 
 function renderAchievements(){
   const history=getHistory();
   if(!history.length){
-    achievementsBox.innerHTML='<p>Juega tu primera partida para desbloquear logros.</p>';
+    achievementsBox.innerHTML='<p>Supera retos de puntuación para ir desbloqueando insignias.</p>';
     return;
   }
   const mine=playerName?history.filter(item=>item.name===playerName):history;
@@ -233,14 +227,14 @@ function renderAchievements(){
 }
 
 function renderIdleState(){
-  modeChip.textContent='En reposo';
+  modeChip.textContent='Listo para empezar';
   stageBox.className='empty-state';
-  stageBox.innerHTML='<div><h3>Todo el juego vive aquí.</h3><p>La pregunta, las respuestas, el progreso, los mensajes motivadores y el resultado final ocupan una única superficie central para que la experiencia sea mucho más clara y cómoda.</p></div>';
+  stageBox.innerHTML='<div><h3>Prepárate para la ronda.</h3><p>Cuando empieces, aquí verás cada pregunta, las opciones de respuesta, tu avance y el cierre final con tu porcentaje de acierto.</p></div>';
 }
 
 function startGame(){
   if(!playerName){
-    playerStatusCard.innerHTML='<strong>Necesitas identificarte</strong><span class="micro">Guarda tu nombre antes de empezar la partida.</span>';
+    playerStatusCard.innerHTML='<strong>Falta tu nombre</strong><span class="micro">Escríbelo para comenzar la ronda y guardar tu resultado.</span>';
     return;
   }
   gameState={order:shuffleOrder(TOTAL_QUESTIONS),index:0,score:0,locked:false};
@@ -253,9 +247,9 @@ function renderQuestion(){
   const progress=Math.round((gameState.index/gameState.order.length)*100);
   const currentAnswered=gameState.index;
   const currentMessage=getMotivationalMessage(gameState.score,currentAnswered||1);
-  modeChip.textContent='En juego';
+  modeChip.textContent='Ronda activa';
   stageBox.className='';
-  stageBox.innerHTML=`<div class="stage-meta"><span class="stage-chip">Jugador: ${escapeHtml(playerName)}</span><span class="stage-chip">Pregunta ${gameState.index+1}/${gameState.order.length}</span><span class="stage-chip">${gameState.score} aciertos</span></div><div class="progress"><span style="width:${progress}%"></span></div><p class="question">${item.q}</p><div class="aside-note">${currentMessage}</div><div class="answer-grid">${item.a.map((answer,index)=>`<button class="answer-btn" data-choice="${index}" type="button"><span class="answer-key">${letters[index]}</span><div>${answer}</div></button>`).join('')}</div><div class="feedback pending" id="gameFeedback">Responde para continuar.</div><div class="toolbar"><button class="secondary-btn" id="cancelGameBtn" type="button">Salir del juego</button></div>`;
+  stageBox.innerHTML=`<div class="stage-meta"><span class="stage-chip">Jugador: ${escapeHtml(playerName)}</span><span class="stage-chip">Pregunta ${gameState.index+1}/${gameState.order.length}</span><span class="stage-chip">${gameState.score} aciertos</span></div><div class="progress"><span style="width:${progress}%"></span></div><p class="question">${item.q}</p><div class="aside-note">${currentMessage}</div><div class="answer-grid">${item.a.map((answer,index)=>`<button class="answer-btn" data-choice="${index}" type="button"><span class="answer-key">${letters[index]}</span><div>${answer}</div></button>`).join('')}</div><div class="feedback pending" id="gameFeedback">Elige una respuesta.</div><div class="toolbar"><button class="secondary-btn" id="cancelGameBtn" type="button">Terminar ronda</button></div>`;
   stageBox.querySelectorAll('[data-choice]').forEach(button=>button.addEventListener('click',()=>answerQuestion(Number(button.dataset.choice),item)));
   document.getElementById('cancelGameBtn').addEventListener('click',()=>{
     gameState=null;
@@ -300,9 +294,9 @@ function advanceGame(){
     const history=getHistory();
     history.unshift({name:playerName,score:gameState.score,total:gameState.order.length,date:new Date().toISOString()});
     saveHistory(history.slice(0,20));
-    modeChip.textContent='Resultado';
+    modeChip.textContent='Resumen final';
     stageBox.className='empty-state';
-    stageBox.innerHTML=`<div><h3>Partida terminada</h3><p>${escapeHtml(playerName)}, has conseguido ${gameState.score}/${gameState.order.length} aciertos.</p><p>${getMotivationalMessage(gameState.score,gameState.order.length)}</p><div class="toolbar"><button class="primary-btn" id="retryBtn" type="button">Jugar otra vez</button><button class="secondary-btn" id="closeBtn" type="button">Cerrar</button></div></div>`;
+    stageBox.innerHTML=`<div><h3>Resultado de la ronda</h3>${buildResultChart(gameState.score,gameState.order.length)}<div class="toolbar"><button class="primary-btn" id="retryBtn" type="button">Nueva ronda</button><button class="secondary-btn" id="closeBtn" type="button">Cerrar resumen</button></div></div>`;
     document.getElementById('retryBtn').addEventListener('click',startGame);
     document.getElementById('closeBtn').addEventListener('click',()=>{
       gameState=null;
@@ -321,7 +315,7 @@ playerForm.addEventListener('submit',event=>{
   event.preventDefault();
   const cleanName=normalizeName(playerNameInput.value);
   if(!cleanName){
-    playerStatusCard.innerHTML='<strong>Nombre no válido</strong><span class="micro">Escribe un nombre para guardar tu progreso.</span>';
+    playerStatusCard.innerHTML='<strong>Nombre no válido</strong><span class="micro">Escribe un nombre breve para registrar tus resultados.</span>';
     return;
   }
   playerName=cleanName;
@@ -341,8 +335,8 @@ resetHistoryBtn.addEventListener('click',()=>{
 
 copyGameLinkBtn.addEventListener('click',async()=>{
   await navigator.clipboard.writeText(window.location.href);
-  copyGameLinkBtn.textContent='Enlace copiado';
-  setTimeout(()=>{copyGameLinkBtn.textContent='Copiar enlace del juego';},1400);
+  copyGameLinkBtn.textContent='Acceso copiado';
+  setTimeout(()=>{copyGameLinkBtn.textContent='Copiar acceso';},1400);
 });
 
 playerNameInput.value=playerName;
